@@ -417,7 +417,49 @@ PRINT "Result: " + result
         PRINT "Access Denied"
     ENDIF
 END</code></pre></div>`},
-                        { title: "Login System Flowchart", content: `<p class="text-xl text-gray-700 mb-6">The flowchart shows a single decision diamond with the compound condition inside.</p><div class="flex justify-center"><img src="https://placehold.co/500x600/f4f4f5/7b2124?text=Login+System+Flowchart" alt="Login System Flowchart" class="rounded-lg shadow-md"></div>`},
+                        { title: "Login System Flowchart", content: `<p class="text-xl text-gray-700 mb-6">The flowchart shows a single decision diamond with the compound condition inside.</p>
+                            <div class="flex justify-center p-4 bg-white rounded-lg shadow-inner">
+                                <svg viewBox="0 0 500 600" class="w-full h-auto max-w-md">
+                                    <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4b5563"></path></marker></defs>
+                                    
+                                    <!-- Start -->
+                                    <ellipse cx="250" cy="40" rx="60" ry="20" style="stroke: #4b5563; stroke-width: 2;" fill="#fefce8"></ellipse>
+                                    <text x="250" y="45" style="font-family: 'Inter', sans-serif; font-size: 14px; text-anchor: middle; fill: #1f2937;">Start</text>
+                                    <line x1="250" y1="60" x2="250" y2="90" style="stroke: #4b5563; stroke-width: 2; marker-end: url(#arrow);"></line>
+                                    
+                                    <!-- Input -->
+                                    <path d="M 150 90 L 350 90 L 340 140 L 140 140 Z" style="stroke: #4b5563; stroke-width: 2;" fill="#e0f2fe"></path>
+                                    <text x="250" y="110" style="font-family: 'Inter', sans-serif; font-size: 14px; text-anchor: middle; fill: #1f2937;">Read inputUser,</text>
+                                    <text x="250" y="125" style="font-family: 'Inter', sans-serif; font-size: 14px; text-anchor: middle; fill: #1f2937;">inputPass</text>
+                                    <line x1="250" y1="140" x2="250" y2="170" style="stroke: #4b5563; stroke-width: 2; marker-end: url(#arrow);"></line>
+                                    
+                                    <!-- Decision -->
+                                    <path d="M 250 170 L 370 245 L 250 320 L 130 245 Z" style="stroke: #4b5563; stroke-width: 2;" fill="#fee2e2"></path>
+                                    <text x="250" y="240" style="font-family: 'Inter', sans-serif; font-size: 12px; text-anchor: middle; fill: #1f2937;">inputUser == correctUser</text>
+                                    <text x="250" y="255" style="font-family: 'Inter', sans-serif; font-size: 12px; text-anchor: middle; fill: #1f2937;">AND</text>
+                                    <text x="250" y="270" style="font-family: 'Inter', sans-serif; font-size: 12px; text-anchor: middle; fill: #1f2937;">inputPass == correctPass?</text>
+
+                                    <!-- Yes Path (Down) -->
+                                    <line x1="250" y1="320" x2="250" y2="350" style="stroke: #4b5563; stroke-width: 2; marker-end: url(#arrow);"></line>
+                                    <text x="265" y="340" style="font-family: 'Inter', sans-serif; font-size: 12px;">Yes</text>
+                                    <path d="M 170 350 L 330 350 L 320 390 L 160 390 Z" style="stroke: #4b5563; stroke-width: 2;" fill="#dcfce7"></path>
+                                    <text x="250" y="375" style="font-family: 'Inter', sans-serif; font-size: 14px; text-anchor: middle; fill: #1f2937;">Print "Access Granted"</text>
+                                    <line x1="250" y1="390" x2="250" y2="480" style="stroke: #4b5563; stroke-width: 2;"></line>
+                                    
+                                    <!-- No Path (Right) -->
+                                    <line x1="370" y1="245" x2="420" y2="245" style="stroke: #4b5563; stroke-width: 2; marker-end: url(#arrow);"></line>
+                                    <text x="395" y="235" style="font-family: 'Inter', sans-serif; font-size: 12px;">No</text>
+                                    <path d="M 340 225 L 500 225 L 490 265 L 330 265 Z" style="stroke: #4b5563; stroke-width: 2;" fill="#fce7f3"></path>
+                                    <text x="420" y="250" style="font-family: 'Inter', sans-serif; font-size: 14px; text-anchor: middle; fill: #1f2937;">Print "Access Denied"</text>
+                                    <line x1="420" y1="265" x2="420" y2="450" style="stroke: #4b5563; stroke-width: 2;"></line>
+                                    <line x1="420" y1="450" x2="250" y2="450" style="stroke: #4b5563; stroke-width: 2;"></line>
+                                    <line x1="250" y1="450" x2="250" y2="480" style="stroke: #4b5563; stroke-width: 2; marker-end: url(#arrow);"></line>
+
+                                    <!-- End -->
+                                    <ellipse cx="250" cy="500" rx="60" ry="20" style="stroke: #4b5563; stroke-width: 2;" fill="#fefce8"></ellipse>
+                                    <text x="250" y="505" style="font-family: 'Inter', sans-serif; font-size: 14px; text-anchor: middle; fill: #1f2937;">End</text>
+                                </svg>
+                            </div>`},
                         { title: "Scenario 3: Sum of 5 Numbers (Iteration)", content: `<p class="text-xl text-gray-700 mb-6"><strong>Problem:</strong> How can we get 5 numbers from a user and calculate their sum without declaring 5 different variables?</p><div class="bg-gray-50 p-6 rounded-lg border-l-4 border-pup-maroon"><p class="text-lg text-gray-600">This problem introduces the need for our third logic block: <strong>Iteration</strong> (looping). We need to repeat the action of "ask for a number and add it to a running total" a specific number of times.</p></div>`},
                         { title: "Sum of 5 Numbers Pseudocode", content: `<p class="text-xl text-gray-700 mb-6">Here's how we can represent a loop in pseudocode.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>START
     total = 0
@@ -445,269 +487,86 @@ END</code></pre></div>`},
                     ]
                 },
                  'week-5-6': {
-                    title: 'Weeks 5-6: Java Program Basics',
+                    title: 'Weeks 5-6: Intro to Python',
                     slides: [
-                        { title: "Setting up your Workshop", content: `<h3 class="text-4xl font-black text-pup-maroon">Time to Code!</h3><p class="mt-4 text-xl text-gray-700">We've planned our logic, now it's time to write our first program. We will use Java. To do this, you'll need the Java Development Kit (JDK) which contains the compiler, and an Integrated Development Environment (IDE) like VS Code or IntelliJ IDEA, which is a smart code editor.</p>`},
-                        { title: "Anatomy of a Java Program", content: `<p class="text-xl text-gray-700 mb-6">Every Java program has a basic structure. Let's break it down.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// This is the class. The file must be named HelloWorld.java
-public class HelloWorld {
+                        { title: "Let's Switch to Python!", content: `<h3 class="text-4xl font-black text-pup-maroon">A New Language to Learn!</h3><p class="mt-4 text-xl text-gray-700">From now on, we will be using Python for our coding examples and exercises. Python is an excellent language for beginners because its syntax is clean, readable, and closer to plain English.</p>`},
+                        { title: "Why Python?", content: `<p class="text-xl text-gray-700 mb-6">Python is one of the most popular programming languages in the world for a reason.</p><ul class="list-disc list-inside space-y-3 text-lg text-gray-800"><li><strong class="text-pup-maroon">Easy to Read and Write:</strong> Its simple syntax makes it easy to learn.</li><li><strong class="text-pup-maroon">Versatile:</strong> Used for web development, data science, AI, automation, and more.</li><li><strong class="text-pup-maroon">Interpreted:</strong> Python is an interpreted language, which makes for a fast development cycle. You write code, you run it instantly. No separate compilation step like in Java.</li><li><strong class="text-pup-maroon">Large Community & Libraries:</strong> A massive community means lots of support and pre-built code (libraries) for almost any task you can imagine.</li></ul>`},
+                        { title: "Setting Up Your Python Environment", content: `<p class="text-xl text-gray-700 mb-6">Before we can code, we need two things: the Python interpreter and a good code editor.</p><ol class="list-decimal list-inside space-y-4 text-lg text-gray-800"><li><strong>Download Python:</strong> Go to the official Python website. <br><a href="https://www.python.org/downloads/" target="_blank" class="text-blue-600 hover:underline">https://www.python.org/downloads/</a><br>Download the latest version for your operating system (Windows/Mac). <strong class="text-red-600">IMPORTANT:</strong> During installation on Windows, make sure to check the box that says "Add Python to PATH".</li><li><strong>Download VS Code:</strong> Visual Studio Code is a powerful, free code editor from Microsoft.<br><a href="https://code.visualstudio.com/download" target="_blank" class="text-blue-600 hover:underline">https://code.visualstudio.com/download</a><br>Install it, then open it and install the official "Python" extension from the Extensions marketplace.</li></ol>`},
+                        { title: "Anatomy of a Python Script", content: `<p class="text-xl text-gray-700 mb-6">Python code is saved in files ending with <code>.py</code>. It's much simpler than Java's structure.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code># This is a comment. It's ignored by the interpreter.
 
-    // This is the main method. It's the entry point of our program.
-    public static void main(String[] args) {
-    
-        // This line prints text to the console.
-        System.out.println("Hello, Iskolar ng Bayan!");
-        
-    }
-}</code></pre></div><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Code-Along: My First Java Program</p><p class="text-blue-700">Let's all open our IDEs. We will type this 'Hello, World!' program together. I will guide you through saving the file, compiling it (turning it into code the computer understands), and running it to see the output.</p></div>`},
-                        { title: "Memory Boxes: Variables", content: `<p class="text-xl text-gray-700 mb-6">A <strong>variable</strong> is a container for storing data values. Think of it as a labeled box where you can put information.</p><p class="text-lg font-semibold text-gray-800">Declaration and Initialization</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// 1. Declare a variable (create an empty box with a label)
-String name;
-int age;
+# This line prints a message to the console.
+print("Hello, Iskolar ng Bayan!")
 
-// 2. Assign a value to it (put something in the box)
-name = "Juan";
-age = 20;
+# That's it! No classes or main methods required for a simple script.</code></pre></div>`},
+                        { title: "The Importance of Indentation", content: `<p class="text-xl text-gray-700 mb-6">In Java, curly braces <code>{}</code> are used to define blocks of code. In Python, <strong class="text-pup-maroon">indentation is used instead</strong>. This is not just for style; it's a syntax rule. Code that is part of a block (like inside a function or an if-statement) must be indented.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code># Correct Python indentation
+if 5 > 2:
+    print("Five is greater than two!") # This is inside the if block
 
-// Or do both at the same time (Initialization)
-String course = "BSIT";
-int yearLevel = 1;</code></pre></div>`},
-                        { title: "Data Types: What's in the Box?", content: `<p class="text-xl text-gray-700 mb-6">Java requires you to specify the type of data a variable will hold. This is called a 'statically-typed' language.</p><ul class="list-disc list-inside space-y-2 mt-2 text-gray-700"><li><strong>String:</strong> for text, like "Hello". Always in double quotes.</li><li><strong>int:</strong> for whole numbers, like 10, -5, 138.</li><li><strong>double:</strong> for numbers with decimal points, like 3.14, -15.5.</li><li><strong>char:</strong> for single characters, like 'A', '$'. Always in single quotes.</li><li><strong>boolean:</strong> for true or false values.</li></ul>`},
-                        { title: "Talking to the User: Scanner", content: `<p class="text-xl text-gray-700 mb-6">How do we get input from the user? We use a built-in Java tool called the <strong>Scanner</strong> class.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>import java.util.Scanner; // Need to import it first!
+# Incorrect Python - this will cause an error!
+if 5 > 2:
+print("This will crash!")</code></pre></div>`},
+                        { title: "Memory Boxes: Variables in Python", content: `<p class="text-xl text-gray-700 mb-6">Variables in Python work similarly to other languages, but they are <strong class="text-pup-maroon">dynamically typed</strong>. This means you don't have to declare the data type beforehand. The interpreter figures it out when you assign a value.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code># No need to declare 'int name;' or 'String name;'
+name = "Juan"          # Python knows this is a string
+age = 20               # Python knows this is an integer
+gwa = 1.75             # Python knows this is a float (decimal number)
+is_student = True      # Python knows this is a boolean
 
-public class UserInput {
-    public static void main(String[] args) {
-        Scanner myScanner = new Scanner(System.in); // Create a Scanner object
+# You can even change the type of a variable
+my_variable = 10
+my_variable = "Now I'm a string"</code></pre></div>`},
+                        { title: "Basic Data Types", content: `<p class="text-xl text-gray-700 mb-6">These are the fundamental data types you'll use constantly.</p><ul class="list-disc list-inside space-y-2 mt-2 text-gray-700"><li><strong>String (<code>str</code>):</strong> for text. Can use single <code>'</code> or double <code>"</code> quotes.</li><li><strong>Integer (<code>int</code>):</strong> for whole numbers.</li><li><strong>Float (<code>float</code>):</strong> for numbers with decimal points.</li><li><strong>Boolean (<code>bool</code>):</strong> for <code>True</code> or <code>False</code> values (note the capital T and F).</li></ul>`},
+                        { title: "Talking to the User: The input() function", content: `<p class="text-xl text-gray-700 mb-6">Getting user input is very straightforward in Python using the built-in <code>input()</code> function.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code># The text inside input() is the prompt shown to the user
+name = input("Enter your name: ")
+print("Hello, " + name + "!")</code></pre></div><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Important Note:</p><p class="text-blue-700">The <code>input()</code> function <strong class="font-semibold">always</strong> returns a string, even if the user types a number!</p></div>`},
+                        { title: "Type Casting", content: `<p class="text-xl text-gray-700 mb-6">Because <code>input()</code> always returns a string, if we want to treat the input as a number, we must convert it. This is called type casting.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>age_string = input("Enter your age: ") # e.g., user enters "20"
+age_number = int(age_string)         # Convert the string "20" to the integer 20
 
-        System.out.println("Enter your name:");
-        String name = myScanner.nextLine(); // Read a line of text
+birth_year = 2024 - age_number       # Now we can do math with it!
+print("You were born in " + str(birth_year)) # Convert back to string for printing</code></pre></div><p class="mt-4">Common casting functions: <code>int()</code>, <code>float()</code>, <code>str()</code>.</p>`},
+                        { title: "Scenario: Simple Age Calculator", content: `<p class="text-xl text-gray-700 mb-6">Let's combine what we've learned to create a simple program that calculates the user's age next year.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code># 1. Get input (as a string)
+current_age_str = input("How old are you? ")
 
-        System.out.println("Enter your age:");
-        int age = myScanner.nextInt(); // Read an integer
+# 2. Cast the string to an integer
+current_age_int = int(current_age_str)
 
-        System.out.println("Your name is " + name + " and you are " + age + " years old.");
-    }
-}</code></pre></div>`},
+# 3. Perform the calculation
+age_next_year = current_age_int + 1
+
+# 4. Print the result (casting back to string for concatenation)
+print("Next year, you will be " + str(age_next_year) + " years old.")
+</code></pre></div>`},
+                        { title: "F-Strings: A Better Way to Print", content: `<p class="text-xl text-gray-700 mb-6">Constantly converting variables to strings with <code>str()</code> can be tedious. Python has a modern feature called f-strings to make this easier.</p><p class="text-lg">Just put an <code>f</code> before the opening quote, and you can place your variables directly inside curly braces <code>{}</code> within the string.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>name = "Maria"
+age = 19
+
+# The old way
+print("My name is " + name + " and I am " + str(age) + " years old.")
+
+# The f-string way (much cleaner!)
+print(f"My name is {name} and I am {age} years old.")
+</code></pre></div>`},
+                        { title: "Terminology Review", content: `<ul class="list-disc list-inside space-y-3 text-lg text-gray-800"><li><strong>Interpreter:</strong> A program that reads and executes code line by line.</li><li><strong>Syntax:</strong> The grammatical rules of a programming language. In Python, indentation is a key part of the syntax.</li><li><strong>Variable:</strong> A named storage location for data.</li><li><strong>Dynamic Typing:</strong> The ability of a language (like Python) to automatically determine a variable's data type.</li><li><strong>Type Casting:</strong> Explicitly converting a value from one data type to another (e.g., <code>int()</code>, <code>str()</code>).</li><li><strong>F-String:</strong> A modern way to format strings in Python, embedding expressions inside string literals.</li></ul>`},
+                        { title: "Activity: Personal Bio Creator", content: `<p class="text-xl text-gray-700 mb-6">Let's put it all together with a hands-on coding activity.</p><div class="bg-gray-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-pup-maroon">Task: Bio Creator</h4><p class="mt-2 text-gray-600">Write a Python script that does the following:</p><ol class="list-decimal list-inside text-left mt-2"><li>Asks the user for their name.</li><li>Asks the user for their age.</li><li>Asks the user for their favorite subject.</li><li>Prints out a single, well-formatted sentence using an f-string, like: <br><code>"Hello, my name is [name], I am [age] years old, and my favorite subject is [subject]."</code></li></ol><p class="mt-4 font-semibold text-red-600">Answer in 1/4 sheet pad paper and I will collect next f2f meeting.</p></div>`},
                         { 
                             title: "Weeks 5-6 Exercises", 
                             exercises: [
-                                { q: "What is the file extension for a Java source file?", a: ".java" },
-                                { q: "Which method is the entry point for a Java program?", a: "main" },
-                                { q: "Declare an integer variable named 'score' and give it a value of 100.", a: "int score = 100;" },
-                                { q: "Which data type would you use for a student's GWA?", a: "double" },
-                                { q: "What class do you use to get input from the user?", a: "Scanner" }
+                                { q: "What file extension is used for Python scripts?", a: ".py" },
+                                { q: "What symbol is used for comments in Python?", a: "#" },
+                                { q: "What is the function to get input from a user in Python?", a: "input()" },
+                                { q: "What data type does the input() function always return?", a: "string (str)" },
+                                { q: "How do you convert a string variable 's' to an integer?", a: "int(s)" },
+                                { q: "Is Python a compiled or an interpreted language?", a: "Interpreted" },
+                                { q: "What is the term for not having to declare a variable's data type?", a: "Dynamic Typing" },
+                                { q: "Which is the correct boolean value in Python: 'true' or 'True'?", a: "True" },
+                                { q: "What does the 'f' in f-string stand for?", a: "Format" },
+                                { q: "What is the purpose of indentation in Python?", a: "To define blocks of code (it is a syntax rule)." }
                             ]
                         }
                     ]
                 },
-                'week-7-8': {
-                    title: 'Weeks 7-8: Operators',
-                    slides: [
-                        { title: "The Tools of the Trade", content: `<h3 class="text-4xl font-black text-pup-maroon">Doing the Math!</h3><p class="mt-4 text-xl text-gray-700">Operators are special symbols that perform operations on variables and values. We use them to do everything from basic arithmetic to complex logical comparisons.</p>`},
-                        { title: "Arithmetic Operators", content: `<p class="text-xl text-gray-700 mb-6">These are used for mathematical calculations.</p>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-lg text-gray-700">
-                                <li><code>+</code> : Addition</li>
-                                <li><code>-</code> : Subtraction</li>
-                                <li><code>*</code> : Multiplication</li>
-                                <li><code>/</code> : Division</li>
-                                <li><code>%</code> : Modulo (returns the remainder of a division)</li>
-                            </ul>
-                            <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int x = 10;
-int y = 3;
-System.out.println(x / y); // Output: 3 (integer division)
-System.out.println(x % y); // Output: 1 (the remainder)</code></pre></div>`},
-                        { title: "Assignment & Relational Operators", content: `
-                            <p class="text-xl text-gray-700 mb-4"><strong>Assignment Operators</strong> assign values.</p>
-                            <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
-                                <li><code>=</code> : Simple assignment (<code>x = 5</code>)</li>
-                                <li><code>+=</code> : Add and assign (<code>x += 3</code> is same as <code>x = x + 3</code>)</li>
-                                <li><code>-=</code>, <code>*=</code>, <code>/=</code> also exist.</li>
-                            </ul>
-                             <p class="text-xl text-gray-700 mb-4 mt-6"><strong>Relational Operators</strong> compare two values and return a boolean (true or false).</p>
-                             <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
-                                <li><code>==</code> : Equal to</li>
-                                <li><code>!=</code> : Not equal to</li>
-                                <li><code>></code> : Greater than</li>
-                                <li><code><</code> : Less than</li>
-                                <li><code>>=</code> : Greater than or equal to</li>
-                                <li><code><=</code> : Less than or equal to</li>
-                            </ul>`},
-                        { title: "Logical Operators", content: `<p class="text-xl text-gray-700 mb-6">These are used to combine conditional statements.</p>
-                             <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
-                                <li><code>&&</code> : Logical AND (returns true if both statements are true)</li>
-                                <li><code>||</code> : Logical OR (returns true if one of the statements is true)</li>
-                                <li><code>!</code> : Logical NOT (reverses the result, returns false if the result is true)</li>
-                            </ul>
-                            <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int age = 20;
-boolean isStudent = true;
-// Is the person a student AND over 18?
-if (age > 18 && isStudent == true) {
-    System.out.println("Qualified for discount.");
-}</code></pre></div><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Activity: Operator Precedence</p><p class="text-blue-700">What is the output of <code>int result = 5 + 10 * 2;</code>? Is it 30 or 25? Let's discuss the 'order of operations' (PEMDAS) in programming and how parentheses <code>()</code> can be used to control it.</p></div>`},
-                        { 
-                            title: "Weeks 7-8 Exercises", 
-                            exercises: [
-                                { q: "What is the result of <code>25 % 4</code>?", a: "1" },
-                                { q: "Which operator checks for equality?", a: "==" },
-                                { q: "Write the shorthand for <code>x = x + 5;</code>", a: "x += 5;" },
-                                { q: "What does <code>(5 > 3 && 2 < 1)</code> evaluate to?", a: "false" },
-                                { q: "What does <code>!(true)</code> evaluate to?", a: "false" }
-                            ]
-                        }
-                    ]
-                },
-                 'week-9-10': {
-                    title: 'Weeks 9-10: Decision Structures',
-                    slides: [
-                        { title: "Making Choices in Code", content: `<h3 class="text-4xl font-black text-pup-maroon">At a Fork in the Road</h3><p class="mt-4 text-xl text-gray-700">Programs are not just straight lines of instructions. They need to make decisions and react to different situations. Decision structures, like <code>if</code> statements, allow our code to follow different paths based on certain conditions.</p>`},
-                        { title: "The if & if-else Statement", content: `<p class="text-xl text-gray-700 mb-6">The <code>if</code> statement executes a block of code if its condition is true. The <code>if-else</code> statement provides an alternative block of code to run if the condition is false.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int grade = 88;
-
-if (grade >= 75) {
-    System.out.println("Congratulations, you passed!");
-} else {
-    System.out.println("You will need to retake the course.");
-}</code></pre></div>`},
-                        { title: "Chaining Conditions: if-else-if", content: `<p class="text-xl text-gray-700 mb-6">To check multiple conditions, we can use the <code>if-else-if</code> ladder.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int score = 85;
-
-if (score >= 90) {
-    System.out.println("Grade: A");
-} else if (score >= 80) {
-    System.out.println("Grade: B");
-} else if (score >= 70) {
-    System.out.println("Grade: C");
-} else {
-    System.out.println("Grade: F");
-}</code></pre></div>`},
-                        { title: "The switch Statement", content: `<p class="text-xl text-gray-700 mb-6">The <code>switch</code> statement is a good alternative to a long <code>if-else-if</code> ladder when you are comparing a single variable against a list of specific values.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int day = 4;
-String dayString;
-
-switch (day) {
-  case 1: dayString = "Monday"; break;
-  case 2: dayString = "Tuesday"; break;
-  case 3: dayString = "Wednesday"; break;
-  case 4: dayString = "Thursday"; break;
-  // ...and so on
-  default: dayString = "Invalid day";
-}
-System.out.println(dayString); // Output: Thursday
-</code></pre></div><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Activity: Choose Your Own Adventure</p><p class="text-blue-700">As a class, let's design a short text-based story. We'll start with a scenario, then prompt the user for a choice (e.g., "You see a cave. Do you enter? (1 for Yes, 2 for No)"). Based on their input, we will use <code>if-else</code> or <code>switch</code> statements to show them a different outcome.</p></div>`},
-                        { 
-                            title: "Weeks 9-10 Exercises", 
-                            exercises: [
-                                { q: "Write an if statement to check if a variable 'age' is 18 or over.", a: "if (age >= 18)" },
-                                { q: "When is the code inside an 'else' block executed?", a: "When the 'if' condition is false" },
-                                { q: "What is the purpose of the 'break' keyword in a switch statement?", a: "To exit the switch block" },
-                                { q: "Can you use a switch statement to check if a number is greater than 100?", a: "No (it's for specific values)" }
-                            ]
-                        }
-                    ]
-                },
-                 'week-11-15': {
-                    title: 'Weeks 11-15: Loop Structures',
-                    slides: [
-                        { title: "Doing Things Repeatedly", content: `<h3 class="text-4xl font-black text-pup-maroon">The Power of Repetition</h3><p class="mt-4 text-xl text-gray-700">Loops are one of the most powerful concepts in programming. They allow us to execute a block of code over and over again without having to write it multiple times. This is called 'iteration'.</p>`},
-                        { title: "The 'for' Loop", content: `<p class="text-xl text-gray-700 mb-6">The <code>for</code> loop is used when you know exactly how many times you want to loop.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// This loop will run 5 times, printing numbers 0 through 4.
-
-// (initialization; condition; increment)
-for (int i = 0; i < 5; i++) {
-    System.out.println("Current number is: " + i);
-}</code></pre></div>`},
-                        { title: "The 'while' Loop", content: `<p class="text-xl text-gray-700 mb-6">The <code>while</code> loop is used when you want to loop as long as a condition is true. You might not know how many times it will run.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>import java.util.Scanner;
-Scanner scanner = new Scanner(System.in);
-String input = "";
-
-// Loop as long as the user has NOT typed "quit"
-while (!input.equals("quit")) {
-    System.out.print("Enter a message (type 'quit' to exit): ");
-    input = scanner.nextLine();
-    System.out.println("You said: " + input);
-}</code></pre></div>`},
-                        { title: "The 'do-while' Loop", content: `<p class="text-xl text-gray-700 mb-6">The <code>do-while</code> loop is similar to the <code>while</code> loop, but it guarantees that the code block will be executed at least once, because the condition is checked *after* the loop runs.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int i = 10;
-
-do {
-  // This will print once, even though i is not less than 5
-  System.out.println(i);
-  i++;
-} while (i < 5);</code></pre></div>`},
-                        { title: "Breaking and Continuing", content: `<p class="text-xl text-gray-700 mb-6">We can control the flow of our loops with two special keywords.</p>
-                             <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
-                                <li><code>break</code> : Immediately exits the current loop.</li>
-                                <li><code>continue</code> : Skips the rest of the current iteration and jumps to the beginning of the next one.</li>
-                            </ul>
-                            <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>for (int i = 0; i < 10; i++) {
-    if (i == 4) {
-        continue; // Skip the number 4
-    }
-    if (i == 8) {
-        break; // Exit the loop when i is 8
-    }
-    System.out.println(i); // Will print 0,1,2,3,5,6,7
-}</code></pre></div><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Class Debugging Challenge</p><p class="text-blue-700">I will provide a piece of code with an 'infinite loop' (a loop that never ends). As a class, we need to analyze the code, find the logical error that prevents the loop's condition from ever becoming false, and fix it.</p></div>`},
-                        { 
-                            title: "Weeks 11-15 Exercises", 
-                            exercises: [
-                                { q: "Which loop is best for iterating a specific number of times?", a: "for loop" },
-                                { q: "How many times will a 'do-while' loop always run?", a: "At least once" },
-                                { q: "Which keyword exits a loop completely?", a: "break" },
-                                { q: "Which keyword skips the current iteration?", a: "continue" },
-                                { q: "Write a 'for' loop that counts down from 10 to 1.", a: "for(int i=10; i>=1; i--)" }
-                            ]
-                        }
-                    ]
-                },
-                 'week-16-17': {
-                    title: 'Weeks 16-17: Arrays',
-                    slides: [
-                        { title: "Storing Many Values", content: `<h3 class="text-4xl font-black text-pup-maroon">Organizing Our Data</h3><p class="mt-4 text-xl text-gray-700">So far, our variables can only hold one value at a time. What if we need to store a list of 100 student names? We use an <strong>Array</strong>. An array is a special variable that can hold multiple values of the same data type in a numbered list.</p>`},
-                        { title: "One-Dimensional Arrays", content: `<p class="text-xl text-gray-700 mb-6">Think of a 1D array as a single row of boxes. Access to each box is done through an 'index', which starts at 0.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// Declare an array of strings that can hold 4 names
-String[] names = new String[4];
-
-// Assign values using the index
-names[0] = "Jose";
-names[1] = "Maria";
-names[2] = "Andres";
-names[3] = "Gabriela";
-
-// Access a value
-System.out.println(names[1]); // Output: Maria
-
-// Or declare and initialize at the same time
-int[] scores = {95, 88, 76, 92, 100};
-
-// Looping through an array is very common
-for (int i = 0; i < scores.length; i++) {
-    System.out.println("Score: " + scores[i]);
-}</code></pre></div>`},
-                        { title: "Multi-Dimensional Arrays", content: `<p class="text-xl text-gray-700 mb-6">If a 1D array is a row, a 2D array is a grid or a table with rows and columns. It's an array of arrays.</p>
-                        <div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// A 2x3 integer array (2 rows, 3 columns)
-int[][] matrix = { {1, 2, 3}, {4, 5, 6} };
-
-// Accessing an element requires two indices: [row][column]
-System.out.println(matrix[1][2]); // Output: 6 (second row, third column)
-
-// We use nested loops to iterate through it
-for (int i = 0; i < 2; i++) { // For each row
-    for (int j = 0; j < 3; j++) { // For each column
-        System.out.print(matrix[i][j] + " ");
-    }
-    System.out.println(); // New line after each row
-}</code></pre></div><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Activity: Data Sorter</p><p class="text-blue-700">I will give you an array of integers: <code>{23, 4, 56, 12, 9, 42}</code>. Your task is to write a program that uses a loop to go through this array and find the highest number, the lowest number, and the average of all numbers.</p></div>`},
-                        { 
-                            title: "Weeks 16-17 Exercises", 
-                            exercises: [
-                                { q: "What is the index of the first element in an array?", a: "0" },
-                                { q: "How do you find the number of elements in an array named 'data'?", a: "data.length" },
-                                { q: "Declare an array of integers that can hold 10 numbers.", a: "int[] numbers = new int[10];" },
-                                { q: "In a 2D array `matrix[3][4]`, how do you access the element in the first row and second column?", a: "matrix[0][1]" }
-                            ]
-                        }
-                    ]
-                }
+                'week-7-8': { title: 'Weeks 7-8: Python Operators', slides: [] },
+                'week-9-10': { title: 'Weeks 9-10: Python Decisions', slides: [] },
+                'week-11-15': { title: 'Weeks 11-15: Python Loops', slides: [] },
+                'week-16-17': { title: 'Weeks 16-17: Python Collections', slides: [] }
             },
             'COMP006': {
                 'week-1-2': {
