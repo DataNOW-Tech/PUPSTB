@@ -350,7 +350,7 @@
                         `},
                         { title: "Anatomy of a Digital Beast", content: `<h3 class="text-4xl font-black text-pup-maroon">Let's Open the Box!</h3><p class="mt-4 text-xl text-gray-700">This week, we're exploring <strong class="text-pup-maroon">Hardware</strong> – the collection of physical components that work together to bring your computer to life.</p><p class="mt-4 text-lg text-gray-700">Think of it like being a mechanic for a PC. We'll identify each part and understand its specific job.</p>` },
                         { title: "The Motherboard: The PC's Main Hub", content: `<p class="text-xl text-gray-700 mb-6">Everything connects to the <strong class="text-pup-maroon">Motherboard</strong>. It's the foundation of the computer, a large circuit board that lets all the other parts communicate. It's like the central nervous system of the computer.</p><div class="flex justify-center"><img src="https://placehold.co/400x300/e0f2fe/1e3a8a?text=Motherboard" alt="Motherboard Diagram" class="rounded-lg shadow-md"></div>` },
-                        { title: "Anatomy of a Motherboard", content: `<p class="text-xl text-gray-700 mb-6">Key parts of a motherboard include:</p><ul class="list-disc list-inside space-y-2 mt-2 text-gray-700"><li><strong>CPU Socket:</strong> Where the 'brain' is installed.</li><li><strong>RAM Slots:</strong> Where the short-term memory sticks are inserted.</li><li><strong>PCIe Slots:</strong> For expansion cards like graphics cards or network cards.</li><li><strong>SATA Ports:</strong> To connect storage drives like SSDs and HDDs.</li><li><strong>I/O Panel:</strong> The ports on the back of your PC (USB, HDMI, etc.).</li></ul><div class="flex justify-center mt-4"><img src="https://placehold.co/500x350/f3f4f6/7b2124?text=Labeled+Motherboard" alt="Labeled Motherboard" class="rounded-lg shadow-md"></div>` },
+                        { title: "Anatomy of a Motherboard", content: `<p class="text-xl text-gray-700 mb-6">Key parts of a motherboard include:</p><ul class="list-disc list-inside space-y-2 mt-2 text-gray-700"><li><strong>CPU Socket:</strong> Where the 'brain' is installed.</li><li><strong>RAM Slots:</strong> Where the short-term memory sticks are inserted.</li><li><strong>PCIe Slots:</strong> For expansion cards like graphics cards or network cards.</li><li><strong>SATA Ports:</strong> To connect storage drives like SSDs and HDDs.</li><li><strong>I/O Panel:</strong> The ports on the back of your PC (USB, HDMI, etc.).</li></ul><div class="flex justify-center mt-4"><img src="https://i.imgur.com/2ZcsA64.jpeg" alt="Labeled Motherboard" class="rounded-lg shadow-md"></div>` },
                         { title: "The CPU: The Brains of the Operation", content: `<p class="text-xl text-gray-700 mb-6">The <strong class="text-pup-maroon">Central Processing Unit (CPU)</strong> is the engine of your computer. It executes billions of instructions per second to run your programs.</p><div class="flex justify-center"><img src="https://placehold.co/300x300/fee2e2/991b1b?text=CPU+Chip" alt="CPU" class="rounded-lg shadow-md"></div>` },
                         { title: "Understanding CPU Specs", content: `<p class="text-lg text-gray-700">When you see a CPU, you'll hear these terms:</p><div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-gray-50 p-4 rounded-lg"><strong>Clock Speed (GHz):</strong> How many cycles (instructions) it can run per second. Higher is generally faster.</div><div class="bg-gray-50 p-4 rounded-lg"><strong>Cores:</strong> The number of independent processors on the chip. More cores means it can multitask better (like having multiple chefs).</div><div class="bg-gray-50 p-4 rounded-lg"><strong>Threads:</strong> Virtual cores that help manage tasks more efficiently within the physical cores.</div></div>` },
                         { title: "RAM: The High-Speed Workspace", content: `<p class="text-xl text-gray-700 mb-6"><strong class="text-pup-maroon">Random Access Memory (RAM)</strong> is your computer's short-term, volatile memory. It's where the computer temporarily stores the data for applications you are currently running.</p><div class="flex justify-center"><img src="https://placehold.co/400x200/dcfce7/166534?text=RAM+Stick" alt="RAM" class="rounded-lg shadow-md"></div><p class="mt-4 text-center">More RAM allows you to run more applications smoothly at the same time.</p>` },
@@ -409,6 +409,220 @@
                                 { q: "Is an antivirus program system or application software?", a: "System (Utility)" },
                                 { q: "What is the term for software that is free to try but requires payment for continued use?", a: "Shareware" },
                                 { q: "Which OS function allows you to run multiple programs at once?", a: "Process Management / Multitasking" }
+                            ]
+                        }
+                    ]
+                }
+            },
+            'COMP006': {
+                'week-1-2': {
+                    title: 'Weeks 1-2: Intro to DSA',
+                    slides: [
+                        { title: "The Why and What of DSA", content: `<h3 class="text-4xl font-black text-pup-maroon">Welcome to Data Structures & Algorithms!</h3><p class="mt-4 text-xl text-gray-700">If programming is how we talk to computers, DSA is how we talk to them *efficiently*. It's not just about getting the right answer, but about getting it in the fastest way possible, using the least amount of memory. This course is the foundation for solving complex problems effectively.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"><div class="bg-gray-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-pup-maroon">Data Structures</h4><p class="mt-2 text-gray-600">A way of organizing and storing data in a computer so that it can be accessed and modified efficiently. Think of a library: you can organize books by genre, author, or the Dewey Decimal System. Each is a different "data structure" for books.</p></div><div class="bg-gray-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-pup-maroon">Algorithms</h4><p class="mt-2 text-gray-600">A step-by-step procedure for solving a problem or accomplishing a task. If the data structure is the library, the algorithm is the set of instructions you follow to find a specific book.</p></div></div>`},
+                        { title: "Real-World Analogy: The Library", content: `<p class="text-xl text-gray-700 mb-6">Let's extend the library analogy to understand the relationship between DSA.</p><ul class="list-disc list-inside space-y-4 text-lg text-gray-800"><li><strong>The Problem:</strong> Find the book "The Lord of the Rings".</li><li><strong>Data Structure 1: A Pile of Books.</strong> The books are in a single, unsorted pile. <br><strong>Algorithm 1: Linear Search.</strong> You pick up one book at a time and check the cover. This is slow!</li><li><strong>Data Structure 2: Books sorted by Author.</strong> The books are on shelves, alphabetized by the author's last name.<br><strong>Algorithm 2: Binary Search.</strong> You can go to the middle of the 'T' section and quickly narrow down your search. This is fast!</li></ul><p class="mt-4 text-lg">The right data structure enables a more efficient algorithm.</p>`},
+                        { title: "The Goal: Efficiency", content: `<p class="text-xl text-gray-700 mb-6">Imagine you have a million student records. How long would it take to find one student? The answer depends entirely on the data structure and algorithm you choose.</p><p class="text-lg font-semibold text-gray-800">We measure efficiency in two main ways:</p><ul class="list-disc list-inside space-y-2 mt-2 text-gray-700"><li><strong>Time Complexity:</strong> How does the runtime of an algorithm grow as the size of the input grows? (CPU Time)</li><li><strong>Space Complexity:</strong> How much additional memory does an algorithm need to run? (RAM Usage)</li></ul><div class="mt-8 student-tip p-4 rounded-lg"><p class="font-bold text-blue-800">Key Idea:</p><p class="text-blue-700">We are looking for solutions that are not just correct, but also scalable. A solution that is fast for 10 items might be impossibly slow for 10 million items.</p></div>`},
+                        { title: "Time vs Space: The Trade-off", content: `<p class="text-xl text-gray-700 mb-6">Often, you have to make a choice between a faster algorithm that uses more memory, and a slower one that is more memory-efficient. </p><p class="text-lg text-gray-700">For example, you might "pre-process" data and store extra information (using more space) to make future searches much faster. There's no single "best" solution; it always depends on the constraints of the problem.</p>`},
+                        { title: "Introducing Big O Notation", content: `<p class="text-xl text-gray-700 mb-6"><strong>Big O Notation</strong> is the language we use to describe the performance of an algorithm. It focuses on the "worst-case scenario" as the input size (n) gets very large, ignoring constants and less significant terms.</p><p class="text-lg text-gray-700">If an algorithm has a runtime of <code>4n² + 2n + 100</code>, we say its Big O is just <code>O(n²)</code> because the <code>n²</code> term will dominate the growth rate for large 'n'.</p>`},
+                        { title: "Big O Growth Rates Visualized", content: `<p class="text-xl text-gray-700 mb-6">This chart shows how different Big O complexities scale as the number of items (n) increases. Notice how quickly O(n²) grows compared to O(log n) or O(n).</p><div class="flex justify-center p-4 bg-white rounded-lg shadow-inner"><svg viewBox="0 0 500 300"><path d="M 50 250 L 450 250" stroke="#9ca3af" stroke-width="2"></path><path d="M 50 250 L 50 50" stroke="#9ca3af" stroke-width="2"></path><text x="250" y="270" font-family="Inter" font-size="12">Input Size (n)</text><text x="30" y="150" transform="rotate(-90 30 150)" font-family="Inter" font-size="12">Time</text><path d="M 50 240 C 150 220, 250 200, 450 180" stroke="#ef4444" stroke-width="2" fill="none"></path><text x="400" y="175" fill="#ef4444" font-size="12">O(n)</text><path d="M 50 245 C 150 200, 250 100, 450 60" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="4"></path><text x="300" y="70" fill="#dc2626" font-size="12">O(n²)</text><path d="M 50 248 C 150 240, 250 235, 450 230" stroke="#22c55e" stroke-width="2" fill="none"></path><text x="400" y="225" fill="#22c55e" font-size="12">O(log n)</text><path d="M 50 220 L 450 220" stroke="#3b82f6" stroke-width="2" fill="none"></path><text x="400" y="215" fill="#3b82f6" font-size="12">O(1)</text></svg></div>`},
+                        { title: "O(1) - Constant Time", content: `<p class="text-xl text-gray-700 mb-6">The algorithm takes the same amount of time, regardless of the input size. This is the holy grail of efficiency.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// Getting an item from an array by its index is O(1).
+// It doesn't matter if the array has 10 items or 10 million.
+// The computer performs a direct memory calculation.
+int[] myArray = { 1, 2, 3, 4, 5 };
+int thirdItem = myArray[2]; // This is an O(1) operation.</code></pre></div>`},
+                        { title: "O(n) - Linear Time", content: `<p class="text-xl text-gray-700 mb-6">The runtime grows in direct proportion to the size of the input (n). If you double the input size, the runtime roughly doubles.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// Printing every item in an array is O(n).
+// If the array has 'n' items, the loop runs 'n' times.
+for (int item : myArray) {
+    System.out.println(item); // This line runs 'n' times.
+}</code></pre></div>`},
+                        { title: "O(log n) - Logarithmic Time", content: `<p class="text-xl text-gray-700 mb-6">The runtime grows logarithmically. This means the time it takes increases only slightly for each doubling of the input size. These algorithms are extremely fast and scalable.</p><p class="text-lg text-gray-700">The classic example is <strong>Binary Search</strong>, which works on sorted data. It repeatedly divides the search interval in half. We'll study this in detail later.</p>`},
+                        { title: "O(n²) - Quadratic Time", content: `<p class="text-xl text-gray-700 mb-6">The runtime is proportional to the square of the input size. These algorithms become very slow, very quickly. They are often acceptable for small inputs but not for large ones.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// A loop inside another loop (nested loop) is often O(n²).
+// Here, for each item 'i', we loop through all items 'j'.
+for (int i : myArray) {
+    for (int j : myArray) {
+        System.out.println(i + ", " + j); // This line runs n*n times.
+    }
+}</code></pre></div>`},
+                        { title: "Activity: The Phonebook", content: `<p class="text-xl text-gray-700 mb-6">Let's make Big O tangible with a class activity.</p><div class="bg-gray-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-pup-maroon">Task: Find the Name</h4><p class="mt-2 text-gray-600"><strong>Scenario 1 (O(n) - Linear):</strong> I will give you an unsorted list of 15 names. Find "Penalosa". You have to check every name one by one from the start. In the worst case, you check all 15 names.</p><p class="mt-4 text-gray-600"><strong>Scenario 2 (O(log n) - Logarithmic):</strong> Now I give you a sorted phonebook with thousands of names. Find "Penalosa" again. You don't start at 'A'. You open to the middle, see you're at 'M', and throw away the first half. You repeat this, dividing the problem in half each time. This is dramatically faster!</p></div>`},
+                        { title: "What is an ADT?", content: `<p class="text-xl text-gray-700 mb-6">An <strong>Abstract Data Type (ADT)</strong> is a logical description of a data structure. It defines the data to be stored and the operations that can be performed on that data, but it doesn't specify *how* it will be implemented.</p><ul class="list-disc list-inside space-y-2 text-gray-700"><li><strong>Example ADT: List</strong></li><li><strong>Data:</strong> A sequence of elements.</li><li><strong>Operations:</strong> add(item), remove(item), get(index), size().</li></ul><p class="mt-4">This "List" ADT could be implemented using an Array or another structure called a Linked List. The ADT is the "what", the data structure is the "how".</p>`},
+                        { title: "Types of Algorithms", content: `<p class="text-xl text-gray-700 mb-6">We will study many types of algorithms in this course, each designed to solve a different class of problem.</p><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-bold text-pup-maroon">Searching Algorithms</h4><p class="text-sm text-gray-600">Find an item in a data structure (e.g., Linear Search, Binary Search).</p></div><div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-bold text-pup-maroon">Sorting Algorithms</h4><p class="text-sm text-gray-600">Arrange items in a certain order (e.g., Bubble Sort, Merge Sort).</p></div><div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-bold text-pup-maroon">Graph Algorithms</h4><p class="text-sm text-gray-600">Solve problems related to networks, like finding the shortest path (e.g., Dijkstra's Algorithm).</p></div><div class="bg-gray-50 p-4 rounded-lg"><h4 class="font-bold text-pup-maroon">Recursive Algorithms</h4><p class="text-sm text-gray-600">Solve a problem by breaking it into smaller, self-similar sub-problems.</p></div></div>`},
+                        { title: "Simple Algorithm: Linear Search", content: `<p class="text-xl text-gray-700 mb-6">This is the most basic search algorithm. It sequentially checks each element of a list until a match is found or the whole list has been searched.</p><p class="text-lg font-semibold text-gray-800">Pseudocode</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>FUNCTION linearSearch(array, target):
+  FOR i FROM 0 TO length(array) - 1:
+    IF array[i] == target THEN
+      RETURN i  // Return the index where the target was found
+  RETURN -1 // Return -1 if the target was not found
+END FUNCTION</code></pre></div><p class="mt-4 text-lg"><strong>Time Complexity:</strong> O(n) because in the worst case, we have to look at every single element.</p>`},
+                         { 
+                            title: "Weeks 1-2 Exercises", 
+                            exercises: [
+                                { q: "What are the two main things we measure for an algorithm's efficiency?", a: "Time and Space Complexity" },
+                                { q: "Which is faster for large inputs: O(n) or O(log n)?", a: "O(log n)" },
+                                { q: "What is the Big O notation for a nested loop that iterates 'n' times in both loops?", a: "O(n²)" },
+                                { q: "What does ADT stand for?", a: "Abstract Data Type" },
+                                { q: "In the phonebook analogy, what data structure makes O(log n) search possible?", a: "A sorted list/array" },
+                                { q: "What does Space Complexity measure?", a: "The amount of memory an algorithm uses." },
+                                { q: "Differentiate between a Data Structure and an Algorithm.", a: "A DS is how data is organized, an algorithm is a process to solve a problem." },
+                                { q: "Give an example of a real-world problem where efficiency matters.", a: "Social media feed loading, GPS routing, etc." },
+                                { q: "What does it mean for an algorithm to be 'scalable'?", a: "It performs well even as the input size grows very large." },
+                                { q: "In a linear search of 20 items, what is the worst-case number of comparisons?", a: "20" }
+                            ]
+                        }
+                    ]
+                },
+                'week-3-4': {
+                    title: 'Weeks 3-4: Arrays Deep Dive',
+                    slides: [
+                        { title: "Arrays Revisited", content: `<h3 class="text-4xl font-black text-pup-maroon">The Simplest Structure</h3><p class="mt-4 text-xl text-gray-700">Arrays are the foundation of many other data structures. Mastering them is crucial. They are blocks of memory that store elements of the same data type sequentially.</p><div class="mt-4 p-4 bg-blue-100 rounded-lg text-center"><p class="text-lg font-mono">Index: [0] [1] [2] [3] [4]</p><p class="text-lg font-mono">Value: | 8 | 5 | 12| 7 | 2 |</p></div>` },
+                        { title: "Arrays in Memory", content: `<p class="text-xl text-gray-700 mb-6">The defining feature of an array is its <strong class="text-pup-maroon">contiguous memory allocation</strong>. This means all the elements are stored next to each other in the computer's memory. This is why accessing an element by its index is so fast (O(1)).</p>`},
+                        { title: "Visualizing Contiguous Memory", content: `<p class="text-xl text-gray-700 mb-6">The computer can do a simple calculation to find the memory address of any element: <code>start_address + (index * element_size)</code>. No need to iterate!</p><div class="flex justify-center p-4 bg-white rounded-lg shadow-inner"><svg viewBox="0 0 500 150"><text x="10" y="20" font-family="Inter" font-size="12">Memory Address:</text><text x="50" y="40" font-family="Inter" font-size="12">1000</text><text x="110" y="40" font-family="Inter" font-size="12">1004</text><text x="170" y="40" font-family="Inter" font-size="12">1008</text><rect x="50" y="50" width="60" height="40" stroke="black" fill="#e0f2fe"></rect><text x="80" y="75" text-anchor="middle">Val[0]</text><rect x="110" y="50" width="60" height="40" stroke="black" fill="#e0f2fe"></rect><text x="140" y="75" text-anchor="middle">Val[1]</text><rect x="170" y="50" width="60" height="40" stroke="black" fill="#e0f2fe"></rect><text x="200" y="75" text-anchor="middle">Val[2]</text></svg></div>`},
+                        { title: "Pros and Cons of Arrays", content: `<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-green-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-green-800">Pros</h4><ul class="list-disc list-inside mt-2"><li>Fast random access (O(1))</li><li>Simple to use</li><li>Memory efficient (no extra pointers)</li></ul></div><div class="bg-red-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-red-800">Cons</h4><ul class="list-disc list-inside mt-2"><li>Fixed size</li><li>Slow insertion and deletion in the middle (O(n))</li></ul></div></div>` },
+                        { title: "Array Operations in Java", content: `<p class="text-xl text-gray-700 mb-6">Let's review the basic operations with code.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// 1. Declaration and Initialization
+int[] grades = {88, 92, 77, 100, 85};
+
+// 2. Accessing a value (O(1))
+int thirdGrade = grades[2]; // Gets 77
+
+// 3. Updating a value (O(1))
+grades[0] = 90; // The first grade is now 90
+
+// 4. Looping through the array (O(n))
+for (int i = 0; i < grades.length; i++) {
+    System.out.println(grades[i]);
+}</code></pre></div>`},
+                        { title: "Operation Deep Dive: Insertion", content: `<p class="text-xl text-gray-700 mb-6">To insert an element at index 2, we must shift all subsequent elements to the right. This is an O(n) operation in the worst case.</p><ol class="list-decimal list-inside"><li>Create a new, larger array.</li><li>Copy elements from the old array up to the insertion point.</li><li>Place the new element at the desired index.</li><li>Copy the remaining elements from the old array, shifting their indices.</li></ol>`},
+                        { title: "Visualizing Insertion & Shifting", content: `<p class="text-xl text-gray-700 mb-6">Inserting '99' at index 2.</p><div class="flex justify-center p-4 bg-white rounded-lg shadow-inner"><svg viewBox="0 0 500 200"><text x="10" y="20">Original:</text><rect x="50" y="30" width="40" height="30" stroke="black" fill="#e0f2fe"></rect><text x="70" y="50" text-anchor="middle">5</text><rect x="90" y="30" width="40" height="30" stroke="black" fill="#e0f2fe"></rect><text x="110" y="50" text-anchor="middle">8</text><rect x="130" y="30" width="40" height="30" stroke="black" fill="#e0f2fe"></rect><text x="150" y="50" text-anchor="middle">2</text><text x="10" y="100">New Array:</text><rect x="50" y="110" width="40" height="30" stroke="black" fill="#e0f2fe"></rect><text x="70" y="130" text-anchor="middle">5</text><rect x="90" y="110" width="40" height="30" stroke="black" fill="#e0f2fe"></rect><text x="110" y="130" text-anchor="middle">8</text><rect x="130" y="110" width="40" height="30" stroke="black" fill="#dcfce7"></rect><text x="150" y="130" text-anchor="middle">99</text><rect x="170" y="110" width="40" height="30" stroke="black" fill="#e0f2fe"></rect><text x="190" y="130" text-anchor="middle">2</text><path d="M 150 60 C 150 80, 200 80, 200 110" stroke="#ef4444" fill="none" stroke-dasharray="4" stroke-width="2"></path></svg></div>`},
+                        { title: "Operation Deep Dive: Deletion", content: `<p class="text-xl text-gray-700 mb-6">To delete an element, we must shift all subsequent elements to the left to fill the gap. This is also an O(n) operation.</p>`},
+                        { title: "Algorithm: Finding the Lowest Value", content: `<p class="text-xl text-gray-700 mb-6">A common task is to iterate through an array to find its minimum or maximum value.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>int[] numbers = {45, 23, 67, 12, 89, 2};
+int lowest = numbers[0]; // Assume the first element is the lowest
+
+for (int i = 1; i < numbers.length; i++) {
+    if (numbers[i] < lowest) {
+        lowest = numbers[i]; // Found a new lowest number
+    }
+}
+System.out.println("The lowest value is: " + lowest); // Output: 2
+</code></pre></div><p class="mt-4 text-lg"><strong>Time Complexity: O(n)</strong></p>`},
+                        { title: "The Fixed-Size Limitation", content: `<p class="text-xl text-gray-700 mb-6">What if you don't know how many items you need to store? A standard array is risky. If you make it too small, you run out of space. If you make it too big, you waste memory.</p>`},
+                        { title: "Solution: Dynamic Arrays", content: `<p class="text-xl text-gray-700 mb-6">Most languages provide a built-in "dynamic array" (in Java, it's called <code>ArrayList</code>). It's built on top of a regular array but automatically handles resizing. When it gets full, it creates a new, bigger array and copies the old elements over.</p><p class="text-lg">This gives you the flexibility of a list with the performance benefits of an array for most operations.</p>`},
+                        { title: "Java ArrayList Examples", content: `<div class="font-mono bg-gray-800 text-white p-4 rounded-lg"><pre><code>// Must import it
+import java.util.ArrayList;
+
+ArrayList<String> names = new ArrayList<String>();
+
+// Add items (easy!)
+names.add("Jason");
+names.add("Elaine");
+
+// Get an item
+String firstName = names.get(0);
+
+// Set an item
+names.set(1, "Maria");
+
+// Get size
+int count = names.size();</code></pre></div>`},
+                        { title: "2D Arrays: The Grid", content: `<p class="text-xl text-gray-700 mb-6">A 2D array is an "array of arrays". It's perfect for representing data in a grid or table format, with rows and columns.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>// A 3x2 grid (3 rows, 2 columns)
+String[][] seatingChart = new String[3][2];
+
+seatingChart[0][0] = "Ana";
+seatingChart[0][1] = "Bob";
+seatingChart[1][0] = "Carl";
+// ... and so on
+</code></pre></div>`},
+                        { title: "Scenario: A Tic-Tac-Toe Board", content: `<p class="text-xl text-gray-700 mb-6">A 3x3 grid is a perfect use case for a 2D array.</p><div class="font-mono bg-gray-800 text-white p-4 rounded-lg mt-4"><pre><code>char[][] board = new char[3][3];
+
+// Player 'X' makes a move to the center
+board[1][1] = 'X';
+
+// Player 'O' makes a move to the top-left
+board[0][0] = 'O';
+
+// We can then loop through this 2D array to print the board
+for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+        System.out.print(board[i][j] + " | ");
+    }
+    System.out.println();
+}</code></pre></div>`},
+                        { 
+                            title: "Weeks 3-4 Exercises", 
+                            exercises: [
+                                { q: "Why is accessing an array element by index an O(1) operation?", a: "Contiguous memory allows for direct calculation of address." },
+                                { q: "What is the main disadvantage of a standard array?", a: "Fixed size." },
+                                { q: "In Java, what class provides a 'dynamic array'?", a: "ArrayList" },
+                                { q: "How would you declare a 4x5 grid of integers in Java?", a: "int[][] grid = new int[4][5];" },
+                                { q: "What is the time complexity of adding an element to the end of a full ArrayList?", a: "O(n) (due to resizing and copying)." },
+                                { q: "What is the primary characteristic of an array's memory allocation?", a: "Contiguous" },
+                                { q: "Why is inserting an element at the beginning of an array slow?", a: "All other elements must be shifted to the right." },
+                                { q: "What happens internally when a full ArrayList needs to add another element?", a: "A new, larger array is created and all elements are copied over." },
+                                { q: "How do you access the element in the 3rd row and 4th column of a 2D array `grid`?", a: "grid[2][3]" },
+                                { q: "Give a real-world example where a 2D array would be a suitable data structure.", a: "A spreadsheet, a maze, a chessboard, a pixel grid for an image." }
+                            ]
+                        }
+                    ]
+                },
+                'week-5-7': {
+                    title: 'Weeks 5-7: Sorting Algorithms',
+                    slides: [
+                        { title: "The Sorting Problem", content: `<h3 class="text-4xl font-black text-pup-maroon">Bringing Order to Chaos</h3><p class="mt-4 text-xl text-gray-700">Sorting is one of the most fundamental problems in computer science. We'll study simple sorting algorithms to understand the core concepts of comparisons and swaps.</p>` },
+                        { title: "Bubble Sort: The Concept", content: `<p class="text-xl text-gray-700 mb-6">Bubble Sort is the simplest sorting algorithm. It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The largest elements "bubble" up to the end of the list with each pass.</p><p class="text-lg"><strong>Analogy:</strong> Imagine students lining up by height. You compare each adjacent pair and swap them if the taller person is on the left. After one pass, the tallest student is at the end. Repeat for the rest.</p>`},
+                        { title: "Bubble Sort: Workflow", content: `<p class="text-xl text-gray-700 mb-6">For an array of size 'n', you make n-1 passes.</p><ol class="list-decimal list-inside"><li><strong>Pass 1:</strong> Compare every adjacent pair from start to end. After this, the largest element is in its correct final position.</li><li><strong>Pass 2:</strong> Compare every adjacent pair from the start to the second-to-last element. Now the second-largest is in place.</li><li>...continue until the array is sorted.</li></ol>`},
+                        { title: "Bubble Sort: Visualization", content: `<p class="text-xl text-gray-700 mb-6">Array: [5, 1, 4, 2]</p><div class="flex justify-center p-4 bg-white rounded-lg shadow-inner"><svg viewBox="0 0 500 250"><text x="10" y="20">Pass 1:</text><text x="50" y="50">[<tspan fill="red">5, 1</tspan>, 4, 2] -> [1, 5, 4, 2]</text><text x="50" y="70">[1, <tspan fill="red">5, 4</tspan>, 2] -> [1, 4, 5, 2]</text><text x="50" y="90">[1, 4, <tspan fill="red">5, 2</tspan>] -> [1, 4, 2, 5]</text><text x="10" y="140">Pass 2:</text><text x="50" y="170">[<tspan fill="blue">1, 4</tspan>, 2, 5] -> [1, 4, 2, 5]</text><text x="50" y="190">[1, <tspan fill="blue">4, 2</tspan>, 5] -> [1, 2, 4, 5]</text></svg></div>`},
+                        { title: "Bubble Sort: Code & Complexity", content: `<div class="font-mono bg-gray-800 text-white p-4 rounded-lg"><pre><code>void bubbleSort(int arr[]) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}</code></pre></div><p class="mt-4 text-lg"><strong>Time Complexity: O(n²)</strong> because of the nested loops. Very inefficient for large lists.</p>`},
+                        { title: "Selection Sort: The Concept", content: `<p class="text-xl text-gray-700 mb-6">Selection Sort improves on Bubble Sort by making only one swap per pass. It divides the list into a sorted and an unsorted part. It repeatedly "selects" the smallest element from the unsorted part and swaps it with the first element of the unsorted part.</p><p class="text-lg"><strong>Analogy:</strong> You have a hand of cards. Find the lowest card and put it on the far left. Then, ignoring that card, find the lowest among the rest and put it in the second position. Repeat.</p>`},
+                        { title: "Selection Sort: Workflow", content: `<ol class="list-decimal list-inside"><li><strong>Pass 1:</strong> Find the minimum element in the entire array [0...n-1] and swap it with the element at index 0.</li><li><strong>Pass 2:</strong> Find the minimum element in the subarray [1...n-1] and swap it with the element at index 1.</li><li>...continue until the array is sorted.</li></ol>`},
+                        { title: "Selection Sort: Visualization", content: `<p class="text-xl text-gray-700 mb-6">Array: [64, 25, 12, 22]</p><div class="p-4 bg-white rounded-lg shadow-inner text-lg font-mono"><p>Find min in [64, 25, 12, 22] -> 12. Swap with 64.</p><p class="text-green-600">[12, 25, 64, 22]</p><p>Find min in [25, 64, 22] -> 22. Swap with 25.</p><p class="text-green-600">[12, 22, 64, 25]</p><p>Find min in [64, 25] -> 25. Swap with 64.</p><p class="text-green-600">[12, 22, 25, 64]</p></div>`},
+                        { title: "Selection Sort: Code & Complexity", content: `<div class="font-mono bg-gray-800 text-white p-4 rounded-lg"><pre><code>void selectionSort(int arr[]) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++) {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) min_idx = j;
+        }
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}</code></pre></div><p class="mt-4 text-lg"><strong>Time Complexity: O(n²)</strong>. It makes fewer swaps than Bubble Sort, but the number of comparisons is still high.</p>`},
+                        { title: "Insertion Sort: The Concept", content: `<p class="text-xl text-gray-700 mb-6">Insertion Sort also builds the final sorted array one item at a time. It iterates through the input elements and "inserts" each element into its correct position in the sorted part of the array.</p><p class="text-lg"><strong>Analogy:</strong> This is exactly how most people sort a hand of playing cards. You pick up one card at a time and insert it into the correct place in the cards you're already holding.</p>`},
+                        { title: "Insertion Sort: Workflow", content: `<ol class="list-decimal list-inside"><li>Start with the second element (index 1). Compare it to the one before it and swap if needed.</li><li>Now the first two elements are sorted. Take the third element. Compare it with the elements to its left, shifting them to the right until you find the correct spot for the third element.</li><li>Continue this process, taking the next unsorted element and inserting it into the already-sorted portion of the array.</li></ol>`},
+                        { title: "Insertion Sort: Code & Complexity", content: `<div class="font-mono bg-gray-800 text-white p-4 rounded-lg"><pre><code>void insertionSort(int arr[]) {
+    int n = arr.length;
+    for (int i = 1; i < n; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}</code></pre></div><p class="mt-4 text-lg"><strong>Time Complexity: O(n²)</strong> in the worst case, but it's very efficient for lists that are already "almost sorted", where it can be close to O(n).</p>`},
+                        { title: "Quick Sort: A Glimpse", content: `<p class="text-xl text-gray-700 mb-6">Quick Sort is a much more efficient, "divide and conquer" algorithm. We won't implement it today, but here's the core idea:</p><ol class="list-decimal list-inside"><li><strong>Pick a 'pivot' element</strong> from the array (e.g., the last one).</li><li><strong>Partition:</strong> Reorder the array so that all elements smaller than the pivot come before it, while all elements greater than the pivot come after it.</li><li><strong>Recurse:</strong> Apply the above steps recursively to the sub-array of smaller elements and the sub-array of larger elements.</li></ol><p class="mt-4">Its average time complexity is <strong>O(n log n)</strong>, which is a huge improvement over O(n²)!</p>`},
+                        { title: "Class Activity: Human Sorter", content: `<p class="text-xl text-gray-700 mb-6">Let's physically demonstrate these algorithms.</p><div class="bg-gray-100 p-6 rounded-lg text-center"><h4 class="text-2xl font-bold text-pup-maroon">Task: Sorting in Real Life</h4><p class="mt-2 text-gray-600">I need 5 volunteers to come to the front, each holding a card with a random number. As a class, we will act as the 'CPU' and give instructions to the volunteers to sort themselves using Bubble Sort, then Selection Sort, and finally Insertion Sort. This will help visualize the differences between them.</p></div>`},
+                        { 
+                            title: "Weeks 5-7 Exercises", 
+                            exercises: [
+                                { q: "Which of the three O(n²) sorts is best for an almost-sorted list?", a: "Insertion Sort" },
+                                { q: "Why is Bubble Sort considered inefficient?", a: "It has a worst-case time complexity of O(n²)." },
+                                { q: "What is the main idea behind Selection Sort?", a: "Repeatedly finding the minimum element and moving it to the sorted part." },
+                                { q: "What is the average time complexity of Quick Sort?", a: "O(n log n)" },
+                                { q: "Between Bubble Sort and Selection Sort, which one typically performs fewer swaps?", a: "Selection Sort" },
+                                { q: "In Bubble Sort, where is the largest element after the first full pass?", a: "At the very end of the array." },
+                                { q: "What is the best-case time complexity for Insertion Sort?", a: "O(n)" },
+                                { q: "The 'divide and conquer' strategy is used by which sorting algorithm?", a: "Quick Sort" },
+                                { q: "For a small array of 10 elements, is an O(n²) algorithm generally acceptable?", a: "Yes, the performance difference is negligible for small inputs." },
+                                { q: "If an array is already sorted, how many swaps will Selection Sort perform?", a: "Zero (or n-1, depending on implementation details)." }
                             ]
                         }
                     ]
