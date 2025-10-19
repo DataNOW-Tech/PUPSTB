@@ -52,6 +52,14 @@
             font-weight: 600;
             color: #ca8a04; /* Yellow 600 */
         }
+        /* Keyframe animation for fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
         /* Interactive PC Diagram Styles */
         .pc-part {
             cursor: pointer;
@@ -92,46 +100,100 @@
     <header class="bg-pup-maroon shadow-md sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-4">
-                 <img src="https://placehold.co/50x50/ffffff/7b2124?text=PUP" alt="PUP Logo" class="rounded-full">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/PUP_Seal.svg/1200px-PUP_Seal.svg.png" alt="PUP Logo" class="h-12 w-12">
                 <div>
                     <h1 class="text-2xl md:text-3xl font-bold text-white tracking-wider">Polytechnic University of the Philippines</h1>
                     <p class="text-md md:text-base text-gray-200">Interactive Learning Portal by Jason Penalosa</p>
                 </div>
             </div>
-            <button id="go-back-btn" class="hidden bg-white text-pup-maroon font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors flex items-center space-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
-                </svg>
-                <span>Main Menu</span>
-            </button>
+            <div class="flex items-center space-x-2">
+                <button id="back-to-dashboard-btn" class="hidden bg-white text-pup-maroon font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L9 5.414V17a1 1 0 102 0V5.414l5.293 5.293a1 1 0 001.414-1.414l-7-7z" transform="rotate(270 10 10)" />
+                    </svg>
+                    <span>Admin Dashboard</span>
+                </button>
+                <button id="logout-btn" class="hidden bg-white text-pup-maroon font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Landing Page: Course Selection Grid -->
-    <main id="landing-page" class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-        <div class="text-center mb-10">
+    <!-- Initial Login Page -->
+    <main id="login-page" class="max-w-xl mx-auto p-4 sm:p-6 lg:p-8 mt-10 text-center">
+        <div id="role-selection" class="bg-white p-8 rounded-xl shadow-lg">
             <h2 class="text-3xl font-extrabold text-pup-maroon">Welcome, Iskolar ng Bayan!</h2>
-            <p class="mt-2 text-lg text-gray-600">Please select your program and section to begin.</p>
+            <p class="mt-2 text-lg text-gray-600">Please select your role to begin.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <button id="show-student-login" class="w-full bg-pup-maroon text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-transform transform hover:scale-105">Student Login</button>
+                <button id="show-admin-login" class="w-full bg-gray-200 text-gray-700 font-bold py-3 px-6 rounded-lg hover:bg-gray-300 transition">Admin Login</button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Course Cards will be dynamically inserted here by JavaScript -->
+        <!-- Student Login Form (Initially Hidden) -->
+        <div id="student-login-form" class="hidden mt-6 bg-white p-8 rounded-xl shadow-lg text-left">
+            <h3 class="text-2xl font-bold text-pup-maroon mb-6 text-center">Student Portal Access</h3>
+            <div class="space-y-4">
+                <div>
+                    <label for="course-select" class="block text-sm font-medium text-gray-700 mb-1">Program and Section</label>
+                    <select id="course-select" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-pup-maroon focus:border-pup-maroon transition">
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+                <div>
+                    <label for="student-password-input" class="block text-sm font-medium text-gray-700 mb-1">Passcode</label>
+                    <input type="password" id="student-password-input" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-pup-maroon focus:border-pup-maroon transition" placeholder="Enter course passcode...">
+                </div>
+            </div>
+            <p id="student-login-error" class="text-red-600 text-sm mt-3 hidden">Invalid course or passcode. Please try again.</p>
+            <button id="submit-student-login" class="w-full bg-pup-maroon text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-opacity-90 transition">Enter Lecture Hall</button>
+            <button class="back-to-role-select w-full bg-gray-200 text-gray-700 font-bold py-3 px-4 rounded-lg mt-3 hover:bg-gray-300 transition">Go Back</button>
+        </div>
+
+        <!-- Admin Login Form (Initially Hidden) -->
+        <div id="admin-login-form" class="hidden mt-6 bg-white p-8 rounded-xl shadow-lg text-left">
+            <h3 class="text-2xl font-bold text-pup-maroon mb-6 text-center">Administrator Access</h3>
+             <div>
+                <label for="admin-login-password" class="block text-sm font-medium text-gray-700 mb-1">Admin Password</label>
+                <input type="password" id="admin-login-password" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-pup-maroon focus:border-pup-maroon transition" placeholder="Enter admin password...">
+            </div>
+            <p id="admin-login-error" class="text-red-600 text-sm mt-3 hidden">Invalid password. Please try again.</p>
+            <button id="submit-admin-login" class="w-full bg-pup-maroon text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-opacity-90 transition">Login to Dashboard</button>
+             <button class="back-to-role-select w-full bg-gray-200 text-gray-700 font-bold py-3 px-4 rounded-lg mt-3 hover:bg-gray-300 transition">Go Back</button>
         </div>
     </main>
 
-    <!-- Password Modal for Course Access -->
-    <div id="password-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md transform transition-all" id="password-modal-content">
-            <h3 class="text-2xl font-bold text-pup-maroon text-center mb-2">Access Required</h3>
-            <p class="text-center text-gray-600 mb-6">Enter the passcode for <strong id="selected-course-title" class="text-gray-800"></strong>.</p>
-            <input type="password" id="password-input" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-pup-maroon focus:border-pup-maroon transition" placeholder="Enter passcode...">
-            <p id="password-error" class="text-red-600 text-sm mt-2 hidden">Invalid passcode. Please try again.</p>
-            <button id="submit-password" class="w-full bg-pup-maroon text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-opacity-90 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pup-maroon">Enter Lecture Hall</button>
-            <button id="cancel-password" class="w-full bg-gray-200 text-gray-700 font-bold py-3 px-4 rounded-lg mt-3 hover:bg-gray-300 transition">Cancel</button>
+    <!-- Admin Dashboard: Course Selection Grid -->
+    <main id="admin-dashboard" class="hidden max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-extrabold text-pup-maroon">Administrator Dashboard</h2>
+            <p class="mt-2 text-lg text-gray-600">Select an action for a course.</p>
+        </div>
+        <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Course Cards will be dynamically inserted here for Admin -->
+        </div>
+    </main>
+    
+    <!-- Student List Modal -->
+    <div id="student-list-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-2xl transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="student-list-title" class="text-2xl font-bold text-pup-maroon">Student List</h3>
+                <button id="close-student-list" class="text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+            <input type="text" id="student-search-input" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-4 focus:ring-2 focus:ring-pup-maroon focus:border-pup-maroon" placeholder="Search for a student...">
+            <div id="student-list-container" class="max-h-96 overflow-y-auto">
+                <!-- Student names will be populated here -->
+            </div>
         </div>
     </div>
-    
-    <!-- Admin Password Modal for Revealing Answers -->
+
+
+    <!-- Admin Password Modal for Revealing Answers (for students only) -->
     <div id="admin-password-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 p-4">
         <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-sm transform transition-all">
             <h3 class="text-xl font-bold text-pup-maroon text-center mb-4">Admin Access Required</h3>
@@ -144,7 +206,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Main Content Area: Dashboard with Sidebar and Content -->
     <div id="main-content" class="hidden max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
@@ -166,12 +227,9 @@
         </div>
     </div>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- DATA STORE ---
-        // This section holds all the data for courses, passwords, and lesson content.
-        
         const ADMIN_PASSWORD = 'PUPADMIN24'; // Master password
         const courses = {
             'DIT 1-1 / COMP001': { title: 'Introduction to Computing', code: 'COMP001', password: 'DIT11COMP1' },
@@ -179,6 +237,14 @@
             'IT 1-1 / COMP001': { title: 'Introduction to Computing', code: 'COMP001', password: 'IT11COMP1' },
             'IT 1-2 / COMP001': { title: 'Introduction to Computing', code: 'COMP001', password: 'IT12COMP1' },
             'IT 2-1 / COMP006': { title: 'Data Structures and Algorithms', code: 'COMP006', password: 'IT21COMP6' },
+        };
+
+        const studentLists = {
+            'DIT 1-1 / COMP001': ["ARTOCILLO, AHSTLY ARGANA", "BABADILLA, CEEJAY MONTECILLO", "CANUBAS, CLYDE EMMANUELLE M.", "CARPIO, PRINCE JOSH ESPLANDERO", "DALUGDOG, ANGELO MEDEL", "DELA CRUZ, JHENESIS ANNE LACSAMANA", "DELGADO, CHRIS JHON AMOR", "DIEZ, IAN NICOLE GALLEGO", "DIMAANO, FRANZ JOSEF MAGPANTAY", "GARCIA, JOHN LLOYD HERNANDEZ", "GUEVARRA, ALYSSA CAMILLE LORIA", "HERNANDEZ, JERICHO ISRAEL", "LAGRAZON, MARK ANGELO ALVAREZ", "LAPIDARIO, JOSHUA AGUILA", "LAZARO, JOHN LEXTER LAROSA", "LINATOC, JOHN CARLO CATAPANG", "LUMANGLAS, CHRISTIAN JAY CEJO", "MENDOZA, JENNY ROSE DE GUZMAN", "MENDOZA, RAVEN ANGELO LUTO", "MERCADO, ALLAIZA MAE CABRAL", "MERCADO, LEINARD MAGPANTAY", "NATIVIDAD, LIAN CARLO CULTURA", "NAZARENO, JOHN MARK MAGNAYE", "NUÑEZ, JOHN LLYOD ALCANTARA", "OCAMPO, IAN JAY DE GUZMAN", "PALBACAL, JOHN PAUL ALCANTARA", "PANALIGAN, MARIA REGINA AWATIN", "PEREY, CHRISDELL ANNE ALVA", "PETATE, CHLOE ANNE ESCUETA", "PETRAS, JAMES DARYL TOLENTINO", "RAMIREZ, MARK ANTHONY MANALO", "RAMOS, ERICKA FAYE", "RASCO, NICE JOYCE ANN RODEadilla", "REMPILLO, IAN NEAL MATIMTIM", "SABARIAS, JOSEPH EDUARD CERVITO", "SAN JUAN, ROUIE KEN POLICARPIO", "SANCHEZ, AARON JOSHUA GARIN", "SIMAN, ROMARK BAYSON", "SOTTO, ARAIZA SHAINA ALICAWAY", "TIMOTEO, DARREL MEDINA", "TORALDE, JOHN MARK DANIEL", "UMALI, NEA ANGELA NATANAUAN", "URZO, BRYAN LANTO"],
+            'DIT 1-1 / COMP002': ["ARTOCILLO,AHSTLY,ARGANA", "BABADILLA,CEEJAY,MONTECILLO", "CANUBAS,CLYDE,\"EMMANUELLE M.\"", "CARPIO,\"PRINCE JOSH\",ESPLANDERO", "DALUGDOG,ANGELO,MEDEL", "\"DELA CRUZ\",\"JHENESIS ANNE\",LACSAMANA", "DELGADO,\"CHRIS JHON\",AMOR", "DIEZ,\"IAN NICOLE\",GALLEGO", "GARCIA,\"JOHN LLOYD\",HERNANDEZ", "HERNANDEZ,JERICHO,ISRAEL", "LAGRAZON,\"MARK ANGELO\",ALVAREZ", "LAPIDARIO,JOSHUA,AGUILA", "LAZARO,\"JOHN LEXTER\",LAROSA", "LUMANGLAS,\"CHRISTIAN JAY\",CEJO", "MENDOZA,\"JENNY ROSE\",\"DE GUZMAN\"", "MENDOZA,\"RAVEN ANGELO\",LUTO", "MERCADO,ALLAIZA,CABRAL", "MERCADO,LEINARD,MAGPANTAY", "NATIVIDAD,\"LIAN CARLO\",CULTURA", "NAZARENO,\"JOHN MARK\",MAGNAYE", "NUÑEZ,\"JOHN LLOYD\",ALCANTARA", "OCAMPO,\"IAN JAY\",\"DE GUZMAN\"", "PALBACAL,\"JOHN PAUL\",ALCANTARA", "PANALIGAN,\"MARIA REGINA\",AWATIN", "PEREY,\"CHRISDELL ANNE\",ALVA", "PETATE,\"CHLOE ANNE\",ESCUETA", "PETRAS,\"JAMES DARYL\",TOLENTINO", "RAMIREZ,\"MARK ANTHONY\",MANALO", "RAMOS,\"ERICKA FAYE\",", "RASCO,NICE,JOYCE", "REMPILLO,\"IAN NEAL\",MATIMTIM", "SABARIAS,\"JOSEPH EDUARD\",CERVITO", "\"SAN JUAN\",\"ROUIE KEN\",POLICARPIO", "SANCHEZ,\"AARON JOSHUA\",GARIN", "SIMAN,ROMARK,BAYSON", "SOTTO,\"ARAIZA SHAINA\",ALICAWAY", "TIMOTEO,DARREL,MEDINA", "TORALDE,\"JOHN MARK\",DANIEL", "UMALI,\"NEA ANGELA\",NATANAUAN", "URZO,BRYAN,LANTO"],
+            'IT 1-1 / COMP001': ["ADENA, JOELLYN KIMURA", "ALIMPIADA, JAN MARCK VINCENT ESMAMA", "AMBONG, MARC LENARD", "ATIENZA, JEWEL ANNE DE TORRES", "AUSTRIA, MARK DANIEL PEREZ", "AVELLANO, CHAZZIE MAE", "BALMES, EZEKIEL MABULAY", "BAUTISTA, JOHN LLOYD ROSALES", "BAUTISTA, MICKO ELCARTE", "BERNARDO, SOFIA YSABELLE CARMONA", "BIGLETE, JOHN CARLO PLATA", "BIGYAN, TRISTAN JAY LANUZA", "BOONGALING, JOANA MAE CUETO", "BRIONES, ANNE NICOLE PEREZ", "BUHAT, CHRISTIAN DALE DE GUZMAN", "CABISCuelas, LANCE JUSTINE PEREZ", "CASTILLO, KHRYSS ANJELO GIMENEZ", "CASTILLO, RYAN CHRISTIAN GARCIA", "CATAPANG, JERICHO RAFAEL GONZALES", "CORTEZ, MARK JOSEPH PERALTA", "COSICO, ANGELA MAE", "CUENCA, GABRIELLE ANNE MARIE", "CUEVAS, LEILA SOPHIA", "DE GUZMAN, LEBRON JAMES", "DE SAGUN, JOHN ALDRIN", "DELGADO, KYLE CYRUS", "EVANGELISTA, ZYRA MAE", "FAJARDO, JHON LLOYD", "FORTUNA, JOHN REY", "GARCIA, ANDREI NICO", "GARCIA, JOHN REY", "GARCIA, RENZ", "GONZALES, JOSHUA", "HERNANDEZ, KURT RUSSEL", "INDITA, KIAN", "JAVAL, JOHN CARLO", "LANDICHO, JOSHUA", "LONTOC, EUNICE", "LOPEZ, KAE", "MAGPANTAY, JHON LLOYD", "MALABANAN, ALTHEA", "MANALO, ALEX", "MANIMTIM, JANE", "MENDOZA, JOSHUA", "MORAL, JOHN PAULO", "PLATON, CHARLES DWYNE", "REYES, JOHNCEN", "SABARIA, DAN JAHZIEL", "SOGUILON, NICOLE", "SUAREZ, JOHN TERENCE", "SURMEON, STEPHEN CLOUD", "VALERA, CHRISTIAN JOSEPH"],
+            'IT 1-2 / COMP001': ["BALANI,PRECIOUS PAULINE,MACAHIYA", "BALENDRES,JUSTINE,NUYLES", "BESAS,CHRIS LAWRENCE,LUMACANG", "BRIES,NICOLLE,BISCOCHO", "BUSTAMANTE,ALDRED,DELA CRUZ", "CANDIA,DOMINGO ANTONIO,VILLADOLID", "CARINGAL,JOHN REY,LAT", "CASTILLO,JOSHUA,CARANDANG", "CUENCA,JOHN VINCENT,ALCANTARA", "CUEVAS,REINIER,ROSALES", "DACASIN,JOHN PAOLO,ALVAREZ", "DE ROXAS,ADRIAN,RODELAS", "DELA CRUZ,AARON,SALAZAR", "DIMAANO,ACE,GARCIA", "DIMAANO,JHON LLOYD,MENDOZA", "DURAN,JULIANNE,MOISES", "FERMIN,REIN JOSHUA,MANALO", "FESTIJO,JOHN DALE,TENORIO", "FRANCISCO,LEAN ANDREI,CARMONA", "GARCIA,JOHN LLOYD,MAGPANTAY", "GARCIA,MARK ANTHONY,RODRIGUEZ", "GONZALES,ARJAY,MENDOZA", "HERNANDEZ,GIAN CARLO,PANGANIBAN", "JACOB,FRANCIS,DE GUIA", "JAVAL,KENNETH,CUETO", "LA ROSA,JOHN MARK,MENDOZA", "LANDICHO,MARIA SOPHIA,CORTEZ", "LATAYAN,RENZ,AUSTRIA", "LEBRILLA,JOSHUA,CARINGAL", "LOPEZ,KIMBERLY,DE TORRES", "LUMANGLAS,JOHN LESTER,ALVAREZ", "MAGADIA,LEINARD,GUTIERREZ", "MALABANAN,NATHANIEL,SANTOS", "MALIGALIG,ALLYSA,MENDOZA", "MANALO,JOHN ERICK,CARAAN", "MANGUBAT,MARIAH JANE,MARASIGAN", "MENDOZA,MARIA,MORCILLA", "MORADA,LESLIE ANN,LATAG", "NAVARRO,JOHN MARK,LANDICHO", "NAZARENO,RENZ,CARMONA", "ORTEGA,RONNEL,DIMAANO", "PANIS,ROI CARLLO SANTINO,SABADO", "PANTALEON,KARL ZYRUS,MALITIG", "PERNEZ,JULIAN,", "PERSIA,NIÑO VIRGEL,CAYABYAB", "PUNZALAN,CARIS MARIE,REBOJO", "RAMOS,DYA MARIE,UMANDAP", "RAMOS,JANELLE,LAJARA", "RICOHERMOSO,JOHN PAULO,DE GUZMAN", "ROLDAN,KRISTOFER,RAYCO", "SALAZAR,RYAN,DELA CRUZ", "SAMBITAN,ANGELO,LUBI", "SANTOS,CHRIS JAREL,GARCIA", "SAPORNA,GERALD,MENDOZA", "SILANG,GERALD,CUETO", "SIMBULAN,JAN ELLYZA,RUFINO", "SOLOMON,JOSHUA,CORALES", "TENORIO,RENIEL,CARPIO", "VALENCIA,JHON LLOYD,CUEVAS", "VERA,NICOLE,AUSTRIA", "VILLEGAS,JOHN EMMANUEL,MAGPANTAY"],
+            'IT 2-1 / COMP006': ["ABARQUEZ,LAURENCE PAUL,DELOS REYES", "ABELLA,CHRIZYL,PECHO", "ABIERA,KRYSTEL MAE,DE LA TORRE", "ABIÑO,JENNIFER KYLIE,BARRION", "AMILER,JAY PATRICK,DIEGO", "ATIENZA,JEWEL ANNE,DE TORRES", "AUSTRIA,MARK DANIEL,PEREZ", "AVELLANO,CHAZZIE MAE,", "BALMES,EZEKIEL,MABULAY", "BAUTISTA,JOHN LLOYD,ROSALES", "BAUTISTA,MICKO,ELCARTE", "BERNARDO,SOFIA YSABELLE,CARMONA", "BIGLETE,JOHN CARLO,PLATA", "BIGYAN,TRISTAN JAY,LANUZA", "BOONGALING,JOANA MAE,CUETO", "BRIONES,ANNE NICOLE,PEREZ", "BUHAT,CHRISTIAN DALE,DE GUZMAN", "CABISCUelas,LANCE JUSTINE,PEREZ", "CASTILLO,KHRYSS ANJELO,GIMENEZ", "CASTILLO,RYAN CHRISTIAN,GARCIA", "CATAPANG,JERICHO RAFAEL,GONZALES", "CORTEZ,MARK JOSEPH,PERALTA", "COSICO,ANGELA MAE,", "CUENCA,GABRIELLE ANNE,MARIE", "CUEVAS,LEILA SOPHIA,", "DE GUZMAN,LEBRON JAMES,", "DE SAGUN,JOHN ALDRIN,", "DELGADO,KYLE CYRUS,", "EVANGELISTA,ZYRA MAE,", "FAJARDO,JHON LLOYD,", "FORTUNA,JOHN REY,", "GARCIA,ANDREI NICO,", "GARCIA,JOHN REY,", "GARCIA,RENZ,", "GONZALES,JOSHUA,", "HERNANDEZ,KURT RUSSEL,", "INDITA,KIAN,", "JAVAL,JOHN CARLO,", "LANDICHO,JOSHUA,", "LONTOC,EUNICE,", "LOPEZ,KAE,", "MAGPANTAY,JHON LLOYD,", "MALABANAN,ALTHEA,", "MANALO,ALEX,", "MANIMTIM,JANE,", "MENDOZA,JOSHUA,", "MORAL,JOHN PAULO,", "PANGANIBAN,FRANZ AUSTIN,MENDOZA", "PATDU,RENZ CARLO,CARMONA", "PEÑA,CARL ANTHONY,LANZON", "PERCAL,GABRIEL,CAMPANG", "REYES,LANCE CEDRICK,ORNALES", "RINGOR,RANS CLEMEN EMDEE,VERGARA", "RIVERA,CHARLIE,LATAY", "ROJO,CHESTER CAREY,", "RONQUILLO,CHRISTIAN,MAGTIBAY", "SALAZAR,MARK ANTHONY,LONTOC", "SALAZAR,REINIER,LEYNES", "SAMBRANO,KYLE,CARPIO", "SANCHEZ,JOHN PAULO,ALDAY", "SULIT,RENZO,MASILANG", "SUPREMIDO,AARON,PASTOR", "TAN,ENRICO,GONZALES", "TAPIA,JOHN MARK,GARCIA", "TORRES,JAN MICHAEL,SALAZAR", "VILLANUEVA,SEBASTIAN,SANTOS"]
         };
         
         const content = {
@@ -256,7 +322,7 @@
                     ]
                 },
                 'week-3': {
-                    title: 'Week 3: Computer Hardware',
+                    title: 'Week 3: Interactive Hardware',
                     slides: [
                         { title: "Interactive PC Components Explorer", content: `
                             <p class="text-lg text-gray-700 mb-4">Select a tab to explore the different parts of a computer, then hover over a component to learn its name and function.</p>
@@ -349,18 +415,8 @@
                                 </div>
                             </div>
                         `},
-                        { title: "Anatomy of a Digital Beast", content: `<h3 class="text-4xl font-black text-pup-maroon">Let's Open the Box!</h3><p class="mt-4 text-xl text-gray-700">This week, we're exploring <strong class="text-pup-maroon">Hardware</strong> – the collection of physical components that work together to bring your computer to life.</p><p class="mt-4 text-lg text-gray-700">Think of it like being a mechanic for a PC. We'll identify each part and understand its specific job.</p>` },
-                        { title: "The Motherboard: The PC's Main Hub", content: `<p class="text-xl text-gray-700 mb-6">Everything connects to the <strong class="text-pup-maroon">Motherboard</strong>. It's the foundation of the computer, a large circuit board that lets all the other parts communicate. It's like the central nervous system of the computer.</p><div class="flex justify-center"><img src="https://placehold.co/400x300/e0f2fe/1e3a8a?text=Motherboard" alt="Motherboard Diagram" class="rounded-lg shadow-md"></div>` },
-                        { title: "Anatomy of a Motherboard", content: `<p class="text-xl text-gray-700 mb-6">Key parts of a motherboard include:</p><ul class="list-disc list-inside space-y-2 mt-2 text-gray-700"><li><strong>CPU Socket:</strong> Where the 'brain' is installed.</li><li><strong>RAM Slots:</strong> Where the short-term memory sticks are inserted.</li><li><strong>PCIe Slots:</strong> For expansion cards like graphics cards or network cards.</li><li><strong>SATA Ports:</strong> To connect storage drives like SSDs and HDDs.</li><li><strong>I/O Panel:</strong> The ports on the back of your PC (USB, HDMI, etc.).</li></ul><div class="flex justify-center mt-4"><img src="https://i.imgur.com/2ZcsA64.jpeg" alt="Labeled Motherboard" class="rounded-lg shadow-md"></div>` },
-                        { title: "The CPU: The Brains of the Operation", content: `<p class="text-xl text-gray-700 mb-6">The <strong class="text-pup-maroon">Central Processing Unit (CPU)</strong> is the engine of your computer. It executes billions of instructions per second to run your programs.</p><div class="flex justify-center"><img src="https://placehold.co/300x300/fee2e2/991b1b?text=CPU+Chip" alt="CPU" class="rounded-lg shadow-md"></div>` },
-                        { title: "Understanding CPU Specs", content: `<p class="text-lg text-gray-700">When you see a CPU, you'll hear these terms:</p><div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-gray-50 p-4 rounded-lg"><strong>Clock Speed (GHz):</strong> How many cycles (instructions) it can run per second. Higher is generally faster.</div><div class="bg-gray-50 p-4 rounded-lg"><strong>Cores:</strong> The number of independent processors on the chip. More cores means it can multitask better (like having multiple chefs).</div><div class="bg-gray-50 p-4 rounded-lg"><strong>Threads:</strong> Virtual cores that help manage tasks more efficiently within the physical cores.</div></div>` },
-                        { title: "RAM: The High-Speed Workspace", content: `<p class="text-xl text-gray-700 mb-6"><strong class="text-pup-maroon">Random Access Memory (RAM)</strong> is your computer's short-term, volatile memory. It's where the computer temporarily stores the data for applications you are currently running.</p><div class="flex justify-center"><img src="https://placehold.co/400x200/dcfce7/166534?text=RAM+Stick" alt="RAM" class="rounded-lg shadow-md"></div><p class="mt-4 text-center">More RAM allows you to run more applications smoothly at the same time.</p>` },
-                        { title: "Storage: Long-Term Memory", content: `<p class="text-xl text-gray-700 mb-6">This is where your files, OS, and programs are kept permanently. Unlike RAM, storage is <strong class="text-pup-maroon">non-volatile</strong> – it keeps your data even when the power is off.</p>` },
-                        { title: "HDD vs. SSD", content: `<p class="text-xl text-gray-700 mb-6">The two main types of storage drives:</p><div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4"><div class="bg-gray-100 p-4 rounded-lg text-center"><h4 class="font-bold text-xl">HDD (Hard Disk Drive)</h4><img src="https://placehold.co/200x150/e5e7eb/4b5563?text=HDD" class="mx-auto my-2 rounded-lg"><p class="text-sm">Uses a spinning platter. Slower, cheaper, more storage.</p></div><div class="bg-gray-100 p-4 rounded-lg text-center"><h4 class="font-bold text-xl">SSD (Solid-State Drive)</h4><img src="https://placehold.co/200x150/e5e7eb/4b5563?text=SSD" class="mx-auto my-2 rounded-lg"><p class="text-sm">Uses flash memory chips. Much faster, more durable, more expensive.</p></div></div>` },
-                        { title: "The GPU: Powering Your Pixels", content: `<p class="text-xl text-gray-700 mb-6">The <strong class="text-pup-maroon">Graphics Processing Unit (GPU)</strong>, or graphics card, is a specialized processor designed to handle everything you see on your screen. Essential for gaming, video editing, and AI.</p><div class="flex justify-center"><img src="https://placehold.co/400x250/fef2f2/991b1b?text=Graphics+Card+(GPU)" alt="GPU" class="rounded-lg shadow-md"></div>` },
                         { title: "Input Devices", content: `<p class="text-xl text-gray-700 mb-6">These are the components you use to send information *to* the computer.</p><div class="grid grid-cols-2 gap-4 text-center"><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Keyboard" class="mx-auto rounded"><p>Keyboard</p></div><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Mouse" class="mx-auto rounded"><p>Mouse</p></div><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Microphone" class="mx-auto rounded"><p>Microphone</p></div><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Webcam" class="mx-auto rounded"><p>Webcam</p></div></div>` },
                         { title: "Output Devices", content: `<p class="text-xl text-gray-700 mb-6">These are the components the computer uses to send information *to* you.</p><div class="grid grid-cols-2 gap-4 text-center"><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Monitor" class="mx-auto rounded"><p>Monitor</p></div><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Printer" class="mx-auto rounded"><p>Printer</p></div><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Speakers" class="mx-auto rounded"><p>Speakers</p></div><div class="p-2 bg-gray-50 rounded-lg"><img src="https://placehold.co/150x100/e5e7eb/4b5563?text=Headphones" class="mx-auto rounded"><p>Headphones</p></div></div>` },
-                        { title: "How It All Connects: Basic Assembly", content: `<p class="text-xl text-gray-700 mb-6">All these components are housed in a <strong class="text-pup-maroon">case</strong> and powered by a <strong class="text-pup-maroon">Power Supply Unit (PSU)</strong>. The basic assembly process is:</p><ol class="list-decimal list-inside space-y-1"><li>Install the CPU onto the motherboard.</li><li>Install the RAM sticks into the motherboard slots.</li><li>Mount the motherboard into the computer case.</li><li>Install the PSU and connect its main power to the motherboard.</li><li>Install storage drives (SSD/HDD) and connect them to the motherboard via SATA cables.</li><li>Install the GPU into a PCIe slot.</li><li>Connect all peripherals (keyboard, mouse, monitor).</li></ol>`},
                         { title: "Activity: Virtual PC Builder", content: `<p class="text-xl text-gray-700 mb-6">Let's simulate building a computer.</p><div class="bg-gray-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-pup-maroon">Task: Plan Your Build</h4><p class="mt-2 text-gray-600">I will give you a budget (e.g., 30,000 Pesos) and a purpose (e.g., "for online classes and light gaming"). As a group, your task is to research and list the components (Motherboard, CPU, RAM, Storage, GPU, PSU, Case) you would buy. You must stay within budget. This teaches you about component compatibility and price-to-performance trade-offs.</p><p class="mt-4 font-semibold text-red-600">Answer in 1/4 sheet pad paper and I will collect next f2f meeting.</p></div>` },
                         { title: "Seatwork: Label the Part", content: `<p class="text-xl text-gray-700 mb-6">On a piece of paper, draw a simple diagram of a computer motherboard with empty boxes for the major slots.</p><div class="bg-gray-100 p-6 rounded-lg"><h4 class="text-2xl font-bold text-pup-maroon">Task: Label the Components</h4><p class="mt-2 text-gray-600">I will show a picture of a real motherboard on the screen. Your task is to correctly label the following parts on your drawing:</p><ul class="list-disc list-inside mt-2"><li>CPU Socket</li><li>RAM Slots</li><li>PCIe x16 Slot (for GPU)</li><li>SATA Ports</li><li>Rear I/O Panel</li></ul><p class="mt-4 font-semibold text-red-600">Answer in 1/4 sheet pad paper and I will collect next f2f meeting.</p></div>` },
                         { 
@@ -413,6 +469,19 @@
                             ]
                         }
                     ]
+                },
+                'references': {
+                    title: 'References',
+                    html: `
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <h2 class="text-3xl font-black text-pup-maroon mb-6 border-b-4 border-pup-maroon pb-3">References & Further Reading</h2>
+                            <ul class="list-disc list-inside space-y-3 text-gray-700">
+                                <li>Floyd, Thomas L. (2015). <em>Digital Fundamentals: A Systems Approach.</em> Pearson Education Limited.</li>
+                                <li>Matthes, Eric. (2019). <em>Python Crash Course: A Hands-On, Project-based Introduction to Programming.</em></li>
+                                <li>GCFGlobal. (n.d.). <em>Computer Basics.</em> Retrieved from https://edu.gcfglobal.org/en/computerbasics/</li>
+                                <li>TutorialsPoint. (n.d.). <em>Computer Fundamentals Tutorial.</em> Retrieved from https://www.tutorialspoint.com/computer_fundamentals/index.htm</li>
+                            </ul>
+                        </div>`
                 }
             },
             'COMP002': {
@@ -940,22 +1009,41 @@ for (int i = 0; i < 3; i++) {
             }
         };
 
-        // --- GLOBAL VARIABLES & ELEMENT SELECTORS ---
+        // --- GLOBAL STATE & ELEMENT SELECTORS ---
         let activeSlide = 0;
         let slides = [];
         let currentCourse = null;
         let questionToReveal = null;
+        let currentUserRole = null; // 'student' or 'admin'
 
-        const goBackBtn = document.getElementById('go-back-btn');
-        const landingPage = document.getElementById('landing-page');
-        const courseGrid = landingPage.querySelector('.grid');
-        const passwordModal = document.getElementById('password-modal');
-        const passwordModalContent = document.getElementById('password-modal-content');
-        const passwordInput = document.getElementById('password-input');
-        const passwordError = document.getElementById('password-error');
-        const selectedCourseTitle = document.getElementById('selected-course-title');
-        const submitPasswordBtn = document.getElementById('submit-password');
-        const cancelPasswordBtn = document.getElementById('cancel-password');
+        const loginPage = document.getElementById('login-page');
+        const roleSelection = document.getElementById('role-selection');
+        const studentLoginForm = document.getElementById('student-login-form');
+        const adminLoginForm = document.getElementById('admin-login-form');
+        
+        const showStudentBtn = document.getElementById('show-student-login');
+        const showAdminBtn = document.getElementById('show-admin-login');
+        
+        const courseSelect = document.getElementById('course-select');
+        const studentPasswordInput = document.getElementById('student-password-input');
+        const submitStudentLoginBtn = document.getElementById('submit-student-login');
+        const studentLoginError = document.getElementById('student-login-error');
+        
+        const adminLoginPassword = document.getElementById('admin-login-password');
+        const submitAdminLoginBtn = document.getElementById('submit-admin-login');
+        const adminLoginError = document.getElementById('admin-login-error');
+
+        const adminDashboard = document.getElementById('admin-dashboard');
+        const courseGrid = document.getElementById('course-grid');
+        
+        const studentListModal = document.getElementById('student-list-modal');
+        const studentListTitle = document.getElementById('student-list-title');
+        const studentListContainer = document.getElementById('student-list-container');
+        const closeStudentListBtn = document.getElementById('close-student-list');
+        const studentSearchInput = document.getElementById('student-search-input');
+
+        const logoutBtn = document.getElementById('logout-btn');
+        const backToDashboardBtn = document.getElementById('back-to-dashboard-btn');
         const mainContent = document.getElementById('main-content');
         const contentArea = document.getElementById('content-area');
         const sidebarNav = document.getElementById('sidebar-nav');
@@ -969,62 +1057,180 @@ for (int i = 0; i < 3; i++) {
         
         // --- CORE FUNCTIONS ---
 
-        /**
-         * Initializes the application, populates course cards, and sets up event listeners.
-         */
         function init() {
-            populateCourseCards();
-            cancelPasswordBtn.addEventListener('click', hidePasswordModal);
-            submitPasswordBtn.addEventListener('click', checkPassword);
-            goBackBtn.addEventListener('click', goToMainMenu);
-            passwordInput.addEventListener('keyup', (e) => { if(e.key === 'Enter') checkPassword(); });
+            populateCourseDropdown();
 
+            // Login screen event listeners
+            showStudentBtn.addEventListener('click', showStudentLogin);
+            showAdminBtn.addEventListener('click', showAdminLogin);
+            
+            document.querySelectorAll('.back-to-role-select').forEach(btn => {
+                btn.addEventListener('click', showRoleSelection);
+            });
+
+            // Form submission listeners
+            submitStudentLoginBtn.addEventListener('click', handleStudentLogin);
+            studentPasswordInput.addEventListener('keyup', (e) => { if(e.key === 'Enter') handleStudentLogin(); });
+            
+            submitAdminLoginBtn.addEventListener('click', handleAdminLogin);
+            adminLoginPassword.addEventListener('keyup', (e) => { if(e.key === 'Enter') handleAdminLogin(); });
+
+            logoutBtn.addEventListener('click', logout);
+            backToDashboardBtn.addEventListener('click', showAdminDashboard);
+
+            // Student list modal listeners
+            closeStudentListBtn.addEventListener('click', () => studentListModal.classList.add('hidden'));
+            studentSearchInput.addEventListener('input', filterStudentList);
+
+            // Answer reveal modal listeners
             cancelAdminPasswordBtn.addEventListener('click', hideAdminPasswordModal);
             submitAdminPasswordBtn.addEventListener('click', checkAdminPasswordForAnswer);
             adminPasswordInput.addEventListener('keyup', (e) => { if(e.key === 'Enter') checkAdminPasswordForAnswer(); });
         }
 
-        /**
-         * Dynamically creates and displays course selection cards on the landing page.
-         */
+        function populateCourseDropdown() {
+            courseSelect.innerHTML = '<option value="">-- Select your course --</option>';
+            for (const key in courses) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = `${key} - ${courses[key].title}`;
+                courseSelect.appendChild(option);
+            }
+        }
+        
+        function showStudentLogin() {
+            roleSelection.classList.add('hidden');
+            studentLoginForm.classList.remove('hidden');
+        }
+
+        function showAdminLogin() {
+            roleSelection.classList.add('hidden');
+            adminLoginForm.classList.remove('hidden');
+        }
+
+        function showRoleSelection() {
+            roleSelection.classList.remove('hidden');
+            studentLoginForm.classList.add('hidden');
+            adminLoginForm.classList.add('hidden');
+        }
+
+        function handleStudentLogin() {
+            const selectedKey = courseSelect.value;
+            const enteredPassword = studentPasswordInput.value.trim();
+            
+            if (selectedKey && courses[selectedKey] && enteredPassword === courses[selectedKey].password) {
+                currentUserRole = 'student';
+                currentCourse = { key: selectedKey, ...courses[selectedKey] };
+                launchDashboardForStudent();
+            } else {
+                studentLoginError.classList.remove('hidden');
+                setTimeout(() => studentLoginError.classList.add('hidden'), 3000);
+            }
+        }
+
+        function handleAdminLogin() {
+            const enteredPassword = adminLoginPassword.value.trim();
+            if (enteredPassword === ADMIN_PASSWORD) {
+                currentUserRole = 'admin';
+                launchDashboardForAdmin();
+            } else {
+                adminLoginError.classList.remove('hidden');
+                setTimeout(() => adminLoginError.classList.add('hidden'), 3000);
+            }
+        }
+
+        function logout() {
+            mainContent.classList.add('hidden');
+            adminDashboard.classList.add('hidden');
+            logoutBtn.classList.add('hidden');
+            backToDashboardBtn.classList.add('hidden');
+
+            loginPage.classList.remove('hidden');
+            showRoleSelection();
+
+            currentUserRole = null;
+            currentCourse = null;
+            studentPasswordInput.value = '';
+            adminLoginPassword.value = '';
+            courseSelect.value = '';
+        }
+        
+        function formatStudentName(name) {
+            return name.replace(/,(\w)/g, ', $1').replace(/, /g, ', ').split(',').map(part => {
+                return part.trim().toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+            }).join(', ');
+        }
+
         function populateCourseCards() {
             courseGrid.innerHTML = '';
             for (const key in courses) {
                 const course = courses[key];
                 const card = document.createElement('div');
-                card.className = 'bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300';
-                card.dataset.key = key;
-                card.innerHTML = `<div class="bg-pup-maroon rounded-full p-4 mb-4"><svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div><h3 class="text-xl font-bold text-gray-800">${course.title}</h3><p class="text-gray-500">${key.split('/')[0].trim()}</p><span class="mt-4 bg-pup-gold text-pup-maroon text-xs font-bold px-3 py-1 rounded-full">${course.code}</span>`;
-                card.addEventListener('click', () => handleCourseSelection(key));
+                card.className = 'bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center transition-all duration-300';
+                
+                card.innerHTML = `
+                    <div class="bg-pup-maroon rounded-full p-4 mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">${course.title}</h3>
+                    <p class="text-gray-500">${key.split('/')[0].trim()}</p>
+                    <span class="mt-4 bg-pup-gold text-pup-maroon text-xs font-bold px-3 py-1 rounded-full">${course.code}</span>
+                    <div class="mt-4 border-t pt-4 w-full flex flex-col space-y-2">
+                        <button data-key="${key}" class="view-students-btn w-full bg-blue-100 text-blue-800 text-sm font-semibold py-2 px-4 rounded-lg hover:bg-blue-200 transition">View Students</button>
+                        <button data-key="${key}" class="view-lectures-btn w-full bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition">View Lectures</button>
+                    </div>
+                `;
+
+                card.querySelector('.view-lectures-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentCourse = { key, ...courses[key] };
+                    launchDashboardForStudent(); 
+                });
+
+                card.querySelector('.view-students-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    showStudentList(key);
+                });
+
                 courseGrid.appendChild(card);
             }
         }
-        
-        /**
-         * Handles the selection of a course, storing its data and showing the password modal.
-         * @param {string} key - The key of the selected course from the 'courses' object.
-         */
-        function handleCourseSelection(key) {
-            currentCourse = { key, ...courses[key] };
-            selectedCourseTitle.textContent = `${currentCourse.title} (${key.split('/')[0].trim()})`;
-            showPasswordModal();
+
+        function showStudentList(courseKey) {
+            const students = studentLists[courseKey] || [];
+            studentListTitle.textContent = `Students in ${courseKey}`;
+            studentListContainer.innerHTML = '';
+            if (students.length > 0) {
+                const list = document.createElement('ul');
+                list.className = 'space-y-2';
+                students.forEach(student => {
+                    const li = document.createElement('li');
+                    li.className = 'p-2 border-b';
+                    li.textContent = formatStudentName(student);
+                    list.appendChild(li);
+                });
+                studentListContainer.appendChild(list);
+            } else {
+                studentListContainer.innerHTML = '<p class="text-gray-500 text-center">No student data available for this course.</p>';
+            }
+            studentSearchInput.value = '';
+            studentListModal.classList.remove('hidden');
         }
 
-        // --- MODAL VISIBILITY FUNCTIONS ---
-
-        function showPasswordModal() {
-            passwordModal.classList.remove('hidden');
-            setTimeout(() => passwordModalContent.classList.add('scale-100'), 50); // For transition
-            passwordInput.value = '';
-            passwordError.classList.add('hidden');
-            passwordInput.focus();
+        function filterStudentList() {
+            const searchTerm = studentSearchInput.value.toLowerCase();
+            const students = studentListContainer.querySelectorAll('li');
+            students.forEach(student => {
+                const name = student.textContent.toLowerCase();
+                if (name.includes(searchTerm)) {
+                    student.style.display = '';
+                } else {
+                    student.style.display = 'none';
+                }
+            });
         }
 
-        function hidePasswordModal() {
-            passwordModalContent.classList.remove('scale-100');
-            passwordModal.classList.add('hidden');
-        }
-        
+
         function showAdminPasswordModal(questionId) {
             questionToReveal = questionId;
             adminPasswordModal.classList.remove('hidden');
@@ -1037,61 +1243,52 @@ for (int i = 0; i < 3; i++) {
             adminPasswordModal.classList.add('hidden');
             questionToReveal = null;
         }
-
-        // --- PASSWORD CHECKING FUNCTIONS ---
-
-        /**
-         * Checks the entered course password against the correct one or the admin password.
-         */
-        function checkPassword() {
-            const enteredPassword = passwordInput.value.trim();
-            if (currentCourse && (enteredPassword === currentCourse.password || enteredPassword === ADMIN_PASSWORD)) {
-                launchDashboard();
-            } else {
-                passwordError.classList.remove('hidden');
-                passwordInput.classList.add('border-red-500');
-                setTimeout(() => {
-                    passwordError.classList.add('hidden');
-                    passwordInput.classList.remove('border-red-500');
-                }, 3000);
-            }
-        }
         
-        /**
-         * Checks the admin password to reveal an exercise answer.
-         */
         function checkAdminPasswordForAnswer() {
             const enteredPassword = adminPasswordInput.value.trim();
             if (enteredPassword === ADMIN_PASSWORD) {
-                const answerSpan = document.getElementById(`answer-${questionToReveal}`);
-                const answerButton = document.getElementById(`button-${questionToReveal}`);
-                if (answerSpan && answerButton) {
-                    answerSpan.style.display = 'inline';
-                    answerButton.style.display = 'none';
-                }
+                revealAnswer(questionToReveal);
                 hideAdminPasswordModal();
             } else {
                 adminPasswordError.classList.remove('hidden');
-                setTimeout(() => {
-                    adminPasswordError.classList.add('hidden');
-                }, 2000);
+                setTimeout(() => adminPasswordError.classList.add('hidden'), 2000);
             }
         }
-        
-        // --- NAVIGATION & CONTENT LOADING ---
 
-        /**
-         * Transitions from the landing page to the main dashboard view.
-         */
-        function launchDashboard() {
-            hidePasswordModal();
-            landingPage.classList.add('hidden');
+        function revealAnswer(questionId) {
+             const answerSpan = document.getElementById(`answer-${questionId}`);
+             const answerButton = document.getElementById(`button-${questionId}`);
+             if (answerSpan && answerButton) {
+                 answerSpan.style.display = 'inline';
+                 answerButton.style.display = 'none';
+             }
+        }
+        
+        // --- DASHBOARD & CONTENT LOADING ---
+
+        function launchDashboardForAdmin() {
+            loginPage.classList.add('hidden');
+            adminDashboard.classList.remove('hidden');
+            logoutBtn.classList.remove('hidden');
+            backToDashboardBtn.classList.add('hidden');
+            populateCourseCards();
+        }
+
+        function launchDashboardForStudent() {
+            loginPage.classList.add('hidden');
+            adminDashboard.classList.add('hidden');
             mainContent.classList.remove('hidden');
-            goBackBtn.classList.remove('hidden');
+            logoutBtn.classList.remove('hidden');
+
+            if (currentUserRole === 'admin') {
+                backToDashboardBtn.classList.remove('hidden');
+            } else {
+                backToDashboardBtn.classList.add('hidden');
+            }
             
             const courseContent = content[currentCourse.code];
             if (!courseContent || Object.keys(courseContent).length === 0) {
-                contentArea.innerHTML = `<div class="bg-white p-8 rounded-xl shadow-lg text-center"><h2 class="text-2xl font-bold text-pup-maroon">Content Coming Soon!</h2><p class="mt-2 text-gray-600">Lecture materials for ${currentCourse.title} are under development.</p></div>`;
+                contentArea.innerHTML = `<div class="bg-white p-8 rounded-xl shadow-lg text-center animate-fade-in"><h2 class="text-2xl font-bold text-pup-maroon">Content Coming Soon!</h2><p class="mt-2 text-gray-600">Lecture materials for ${currentCourse.title} are under development.</p></div>`;
                 sidebarNav.innerHTML = '';
                 courseSidebarTitle.textContent = currentCourse.code;
                 return;
@@ -1100,36 +1297,28 @@ for (int i = 0; i < 3; i++) {
             const firstContentKey = Object.keys(courseContent)[0];
             loadContent(firstContentKey); 
         }
-
-        /**
-         * Returns the user to the main menu (landing page).
-         */
-        function goToMainMenu() {
+        
+        function showAdminDashboard() {
             mainContent.classList.add('hidden');
-            goBackBtn.classList.add('hidden');
-            landingPage.classList.remove('hidden');
-            currentCourse = null;
+            adminDashboard.classList.remove('hidden');
+            backToDashboardBtn.classList.add('hidden');
         }
 
-        /**
-         * Populates the sidebar navigation with links based on the course content.
-         * @param {object} courseContent - The content object for the current course.
-         */
         function populateSidebar(courseContent) {
             courseSidebarTitle.textContent = currentCourse.code;
             sidebarNav.innerHTML = '';
-            const firstContentKey = Object.keys(courseContent)[0];
-            Object.keys(courseContent).forEach(key => {
+            const contentKeys = Object.keys(courseContent);
+            
+            contentKeys.forEach((key, index) => {
                 const navItem = document.createElement('a');
                 navItem.href = '#';
                 navItem.dataset.contentId = key;
                 navItem.className = 'block px-4 py-2 rounded-md text-gray-700 hover:bg-gray-200 hover:text-pup-maroon font-medium transition';
                 navItem.textContent = courseContent[key].title;
-                if(key === firstContentKey) navItem.classList.add('bg-gray-200', 'text-pup-maroon');
+                if(index === 0) navItem.classList.add('bg-gray-200', 'text-pup-maroon');
                 navItem.addEventListener('click', (e) => {
                     e.preventDefault();
                     loadContent(key);
-                    // Update active link styling
                     sidebarNav.querySelectorAll('a').forEach(a => a.classList.remove('bg-gray-200', 'text-pup-maroon'));
                     navItem.classList.add('bg-gray-200', 'text-pup-maroon');
                 });
@@ -1137,54 +1326,54 @@ for (int i = 0; i < 3; i++) {
             });
         }
         
-        /**
-         * Loads content into the main area, either as a slideshow or as static HTML.
-         * @param {string} contentId - The key for the content to load.
-         */
         function loadContent(contentId) {
+            contentArea.innerHTML = ''; 
             const courseContent = content[currentCourse.code];
             const contentData = courseContent[contentId];
             
-            if (contentData.slides) {
-                // Generate HTML for a slideshow
-                let slidesHtml = contentData.slides.map((slide, index) => {
-                    let slideContent = slide.content;
-                    if (slide.exercises) {
-                         slideContent = `<h3 class="text-2xl font-bold text-pup-maroon mb-4">Let's Answer in Chorus!</h3><div class="text-lg space-y-4 text-gray-800">
-                            ${slide.exercises.map((ex, exIndex) => {
-                                const questionId = `${contentId}-${exIndex}`;
-                                return `<div class="flex items-center justify-between py-2 border-b">
-                                            <p>${exIndex + 1}. ${ex.q}</p>
-                                            <div>
-                                                <button id="button-${questionId}" data-question-id="${questionId}" class="show-answer-btn text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-1 px-3 rounded-md transition">Show Answer</button>
-                                                <span id="answer-${questionId}" class="answer-span">${ex.a}</span>
-                                            </div>
-                                        </div>`
-                            }).join('')}
-                         </div>`;
+            setTimeout(() => {
+                if (contentData.slides) {
+                    let slidesHtml = contentData.slides.map((slide, index) => {
+                        let slideContent = slide.content || '';
+                        if (slide.exercises) {
+                             slideContent = `<h3 class="text-2xl font-bold text-pup-maroon mb-4">Let's Answer in Chorus!</h3><div class="text-lg space-y-4 text-gray-800">
+                                ${slide.exercises.map((ex, exIndex) => {
+                                    const questionId = `${contentId}-${exIndex}`;
+                                    return `<div class="flex items-center justify-between py-2 border-b">
+                                                <p>${exIndex + 1}. ${ex.q}</p>
+                                                <div>
+                                                    <button id="button-${questionId}" data-question-id="${questionId}" class="show-answer-btn text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-1 px-3 rounded-md transition">Show Answer</button>
+                                                    <span id="answer-${questionId}" class="answer-span">${ex.a}</span>
+                                                </div>
+                                            </div>`
+                                }).join('')}
+                             </div>`;
+                        }
+                        return `<div class="slide ${index === 0 ? 'active' : ''}" data-slide-index="${index}"><h2 class="text-3xl font-black text-pup-maroon mb-6">${slide.title}</h2>${slideContent}</div>`;
+                    }).join('');
+
+                    const slideshowWrapper = document.createElement('div');
+                    slideshowWrapper.className = 'bg-white p-8 rounded-xl shadow-lg animate-fade-in';
+                    slideshowWrapper.innerHTML = `<div id="slideshow-container" class="min-h-[400px]">${slidesHtml}</div><div class="flex justify-between items-center mt-8 pt-4 border-t"><button id="prev-slide" class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-400 transition">&larr; Previous</button><div id="slide-indicator" class="text-gray-600 font-semibold"></div><button id="next-slide" class="bg-pup-maroon text-white font-bold py-2 px-4 rounded-lg hover:bg-opacity-90 transition">Next &rarr;</button></div>`;
+                    contentArea.appendChild(slideshowWrapper);
+                    
+                    setupSlideshow();
+                    if (document.getElementById('pc-diagram-container')) {
+                        setupInteractiveTabs();
+                        setupInteractivePC();
                     }
-                    return `<div class="slide ${index === 0 ? 'active' : ''}" data-slide-index="${index}"><h2 class="text-3xl font-black text-pup-maroon mb-6">${slide.title}</h2>${slideContent}</div>`;
-                }).join('');
 
-                contentArea.innerHTML = `<div class="bg-white p-8 rounded-xl shadow-lg"><div id="slideshow-container" class="min-h-[400px]">${slidesHtml}</div><div class="flex justify-between items-center mt-8 pt-4 border-t"><button id="prev-slide" class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-400 transition">&larr; Previous</button><div id="slide-indicator" class="text-gray-600 font-semibold"></div><button id="next-slide" class="bg-pup-maroon text-white font-bold py-2 px-4 rounded-lg hover:bg-opacity-90 transition">Next &rarr;</button></div></div>`;
-                
-                setupSlideshow();
-                 if (document.getElementById('pc-diagram-container')) {
-                    setupInteractiveTabs();
-                    setupInteractivePC();
+                } else if (contentData.html) {
+                    const staticWrapper = document.createElement('div');
+                    staticWrapper.className = 'animate-fade-in';
+                    staticWrapper.innerHTML = contentData.html;
+                    contentArea.appendChild(staticWrapper);
                 }
-
-            } else {
-                // Load static HTML content
-                contentArea.innerHTML = contentData.html;
-            }
+            }, 50);
         }
 
         // --- SLIDESHOW FUNCTIONS ---
 
-        /**
-         * Sets up the slideshow functionality, including event listeners for navigation and answer buttons.
-         */
         function setupSlideshow() {
             const slideshowContainer = document.getElementById('slideshow-container');
             if (!slideshowContainer) return;
@@ -1202,17 +1391,17 @@ for (int i = 0; i < 3; i++) {
             document.querySelectorAll('.show-answer-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const questionId = e.target.dataset.questionId;
-                    showAdminPasswordModal(questionId);
+                    if (currentUserRole === 'admin') {
+                        revealAnswer(questionId);
+                    } else {
+                        showAdminPasswordModal(questionId);
+                    }
                 });
             });
 
             updateSlideIndicator();
         }
 
-        /**
-         * Changes the currently displayed slide.
-         * @param {number} direction - -1 for previous, 1 for next.
-         */
         function changeSlide(direction) {
             if (!slides || slides.length === 0) return;
             slides[activeSlide].classList.remove('active');
@@ -1221,9 +1410,6 @@ for (int i = 0; i < 3; i++) {
             updateSlideIndicator();
         }
 
-        /**
-         * Updates the slide indicator text and button states (disabled/enabled).
-         */
         function updateSlideIndicator() {
             const indicator = document.getElementById('slide-indicator');
             const prevBtn = document.getElementById('prev-slide');
@@ -1240,7 +1426,8 @@ for (int i = 0; i < 3; i++) {
 
             indicator.textContent = `Slide ${activeSlide + 1} of ${slides.length}`;
             prevBtn.style.visibility = 'visible';
-            
+            nextBtn.style.visibility = 'visible';
+
             prevBtn.disabled = activeSlide === 0;
             prevBtn.classList.toggle('opacity-50', activeSlide === 0);
             prevBtn.classList.toggle('cursor-not-allowed', activeSlide === 0);
@@ -1250,9 +1437,8 @@ for (int i = 0; i < 3; i++) {
             nextBtn.classList.toggle('cursor-not-allowed', activeSlide === slides.length - 1);
         }
 
-        /**
-         * Sets up the interactive PC diagram with tabs.
-         */
+        // --- INTERACTIVE PC DIAGRAM FUNCTIONS ---
+        
         function setupInteractiveTabs() {
             const tabs = document.querySelectorAll('.pc-diagram-tab');
             const tabContents = document.querySelectorAll('.pc-diagram-content');
@@ -1260,24 +1446,15 @@ for (int i = 0; i < 3; i++) {
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     const target = tab.dataset.target;
-
                     tabs.forEach(t => t.classList.remove('active', 'bg-pup-maroon', 'text-white'));
                     tab.classList.add('active', 'bg-pup-maroon', 'text-white');
-
                     tabContents.forEach(content => {
-                        if (content.id === target) {
-                            content.style.display = 'block';
-                        } else {
-                            content.style.display = 'none';
-                        }
+                        content.style.display = content.id === target ? 'block' : 'none';
                     });
                 });
             });
         }
-
-        /**
-         * Sets up the hover tooltips for the interactive PC diagram.
-         */
+        
         function setupInteractivePC() {
             const partDetails = {
                 // External
@@ -1285,14 +1462,12 @@ for (int i = 0; i < 3; i++) {
                 'part-keyboard': { title: 'Keyboard', desc: 'An input device used to type text and commands into the computer.' },
                 'part-mouse': { title: 'Mouse', desc: 'An input device used to point, click, and interact with items on the screen.' },
                 'part-speakers': { title: 'Speakers', desc: 'An output device that produces audio.' },
-
                 // Internal
                 'part-mobo-internal': { title: 'Motherboard', desc: 'The main circuit board connecting all internal components.' },
                 'part-psu-internal': { title: 'Power Supply Unit (PSU)', desc: 'Converts wall outlet AC power to DC power for the computer components.' },
                 'part-gpu-internal': { title: 'Graphics Processing Unit (GPU)', desc: 'A dedicated processor for handling graphics and video output.' },
                 'part-storage-internal': { title: 'Storage Drive (SSD/HDD)', desc: 'The long-term memory where your files and operating system are stored.' },
                 'part-fan': { title: 'Case Fan', desc: 'Cools the internal components by circulating air through the computer case.' },
-
                 // Motherboard
                 'part-cpu-socket': { title: 'CPU Socket', desc: 'The physical connector on the motherboard where the CPU is installed.' },
                 'part-ram-slots': { title: 'RAM Slots', desc: 'Slots where RAM (short-term memory) modules are inserted.' },
@@ -1307,7 +1482,7 @@ for (int i = 0; i < 3; i++) {
             const descEl = document.getElementById('tooltip-desc');
             const diagramContainer = document.getElementById('pc-diagram-container');
 
-            if (!tooltip || !diagramContainer) return;
+            if (!tooltip || !diagramContainer || !titleEl || !descEl) return;
 
             document.querySelectorAll('.pc-part').forEach(part => {
                 part.addEventListener('mousemove', (e) => {
@@ -1332,7 +1507,6 @@ for (int i = 0; i < 3; i++) {
                     tooltip.style.left = `${x}px`;
                     tooltip.style.top = `${y}px`;
                 });
-
                 part.addEventListener('mouseleave', () => {
                     tooltip.style.display = 'none';
                 });
@@ -1346,5 +1520,4 @@ for (int i = 0; i < 3; i++) {
 
 </body>
 </html>
-
 
